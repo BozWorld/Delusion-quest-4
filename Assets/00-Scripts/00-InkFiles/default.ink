@@ -1,5 +1,6 @@
 INCLUDE bulletScript.ink
-VAR HP = 0
+VAR HP = 5
+// create variable for mana
 ->Intro
 
 ===Debug===
@@ -36,10 +37,9 @@ Ennemy_Smiling oh j'apprécie ta témérité mais ça ne sera pas suffisant
 {SetMana("blue")}
 player_def vous vous preparez a recevoir un coup de katana...
 Enemy_idle j'ai toujours des options caché 
-( perd une vie il tire une balle ) 
+~HP-= 1
 -> Intro.idle
 =TLK
-
 Player_idle mais avant que on s'étripe dis moi au moins qui est-tu?
 Enemy_Idle vaste question ou commencer mon récit...
 Player_idle après fin je demandais juste le strict minimum pour s'étriper,
@@ -50,7 +50,6 @@ Enemy_idle je suis le jeune patron d'une entreprise qui vends des des cours de
 Enemy_idle développement personnelles
 Player_idle ah
 --> Intro.idle
-
 =shootMatrix
 {bulletPWR:
 -1:
