@@ -57,6 +57,7 @@ public class InkManager : MonoBehaviour
     private void Start()
     {
         InitStory();
+        AdvanceStory();
     }
 
     private void Update()
@@ -76,11 +77,11 @@ public class InkManager : MonoBehaviour
                 
             }
 
-            if (!story.currentText.Contains("_")) Debug.LogError("text line is not appropriate - underscore '_' missing");
+            if (!story.currentText.Contains("_"))Debug.LogError("text line is not appropriate - underscore '_' missing");
 
             string[] textlineSplits = story.currentText.Split('_');
-            string target = textlineSplits[0];
-            string content = textlineSplits[1];
+            string target = textlineSplits[0].Trim();
+            string content = textlineSplits[1].Trim();
 
             DisplayTextline(target,content);
         }
@@ -90,15 +91,15 @@ public class InkManager : MonoBehaviour
     {
         switch (target)
         {
-            case "main":
+            case "n":
                 _mainTxtBox.GetComponent<UpdateTextBox>().UpdateText(content);
                 break;
 
-            case "prota":
+            case "p":
                 _protaTxtBox.GetComponent<UpdateTextBox>().UpdateText(target,content);
                 break;
 
-            case "enemy":
+            case "e":
                 _enemyTxtBox.GetComponent<UpdateTextBox>().UpdateText(target, content);
                 break;
 
