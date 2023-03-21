@@ -434,8 +434,8 @@ l_mais un duel de volonté des plus érintant pour pouvoir l'accomplir
 
 =ATQ
 {
-  - e_Tu ne croie pas qu'il y a mieux a faire que d'agiter ton vulgaire sabre ici
-    p_Euh vulgaire toi meme ! tu sais meme pas que les Katana ça peut trancher des balles en deux!
+  - e_ Tu ne croie pas qu'il y a mieux a faire que d'agiter ton vulgaire sabre ici
+    p_ Euh vulgaire toi meme ! tu sais meme pas que les Katana ça peut trancher des balles en deux!
     n_ Emile se prend un coups juste après avoir dégainé, venant se loger directement dans une de ses jambes
     ~TakeDamage(2)
     //p_ Au moins, je suis sûr de pas me tromper dans son utili-....ok c'est pas ma meilleurs celle la
@@ -499,50 +499,42 @@ l_mais un duel de volonté des plus érintant pour pouvoir l'accomplir
     {bulletCLR:
 		  - bulletCLR=="blue":
         b_ X ALLONS AU CLIMAX DE CE COMBAT$EMILE MONTRE MOI TOUTE TON INGENIOTÉ, MONTRE MOI TON ESPRIT D'ENTREPRENEUSE
-       -> cowboy 2
+       -> LaSolitudeCommeModeDeVie.idle
+
+      - bulletCLR=="violet":
+        e_ Qu'est ce que tu crois faire a venir ici, me forcer a un choix et se plaindre du resultat!
+        e_ Tu me met dans une situation dont je ne produirait pas quelque chose de satisfaisant...
+        e_ Et tu utilisa pour diminuer mon travail et ma valeur ! Vous etes tous les mêmes !
+        e_ Mais cette fois, j'ai de quoi riposter! Je vais te monter ma valeur et te faire regretter tes actions !
+        ->LaRécompenseDesPerdants.idle
 	}
-		
-	-2:{bulletCLR:
-
-    //  e_Si les duels de samurai et cowboy peuvent être aussi similaire, est ce que d'autres aspect le sont aussi?
-    //  e_ AAHHH, tu me fait douté a cause de ce que tu as dit !
-    //  p_C'est juste un détail, tu sais ?
-    //  e_Les détails sont importants, que ce soit lors des paiements de taxe ou dans l'art des duels!
-        
-        e_Qu'est ce que tu crois faire a venir ici, me forcer a un choix et se plaindre a moi du resultat!
-        e_Tu me met toi même dans une situation dont je ne produirait pas quelque chose de satisfaisant...
-        e_Et tu utilisa pour diminuer mon travail et ma valeur ! Vous etes tous les mêmes !
-        e_Mais cette fois, j'ai de quoi riposter! Je vais te monter ma valeur et te faire regretter tes actions !
-
-    ->Intro.idle
-		-VIOLET: ->LaRécompenseDesPerdants
-	}
-
-  =shootMatrix
-{bulletPWR:
--2:
-    {
-    -bulletCLR=="red":
-    b_ FINISSONS CE COMBAT$ PREPARE TOI A UNE RUPTURE DE L'ILLUSION
-    ->CommentMeurtUnHommeDroit.idle
-
-    - bulletCLR=="violet":
-    e_ Brouillers les pistes t'amenera a rien.
-    e_ Je vois que tu essayes de me titiler de me faire perdre la raison.
-    e_ Mais ça n'arrivera pas, je crois en mes motivations.
-    e_ prèpare toi a tirer tes dernières balles 
-    ->LaRecompenseDesPerdants.idle
-    }
--1:
-    {
-    -bulletCLR=="blue":
-    e_ Tu vois pas plus que les autres ! Avec vos combines
-    e_ Je suis un honnete travailleurs moi, j'ai fait ça toute ma vie.
-    e_ Mais pourrez jamais comprendre ! JE PEUX JOUER AU MEME JEU QUE VOUS !
-    ->LeGoutDeLaVictoire.idle
-    }
 }
-}
+//   =shootMatrix
+// {bulletPWR:
+// -2:
+//     {
+    
+//     -bulletCLR=="red":
+//     b_ FINISSONS CE COMBAT$ PREPARE TOI A UNE RUPTURE DE L'ILLUSION
+//     ->CommentMeurtUnHommeDroit.idle
+
+//     - bulletCLR=="violet":
+//     e_ Brouillers les pistes t'amenera a rien.
+//     e_ Je vois que tu essayes de me titiler de me faire perdre la raison.
+//     e_ Mais ça n'arrivera pas, je crois en mes motivations.
+//     e_ prèpare toi a tirer tes dernières balles 
+//     ->LaRecompenseDesPerdants.idle
+//     }
+// -1:
+//     {
+//     -bulletCLR=="blue":
+//     e_ Tu vois pas plus que les autres ! Avec vos combines
+//     e_ Je suis un honnete travailleurs moi, j'ai fait ça toute ma vie.
+//     e_ Mais pourrez jamais comprendre ! JE PEUX JOUER AU MEME JEU QUE VOUS !
+//     ->LeGoutDeLaVictoire.idle
+//     }
+// }
+// }
 
 
 ===LaRécompenseDesPerdants===
@@ -554,9 +546,22 @@ l_Et de pars cette récompense, il en sortira plus grandit que beaucoup de vainq
 
 -> LaRécompenseDesPerdants.idle
 ===idle===
-~CheckCondition(condition)
-e_Si le samurai et le cowboy sont si similaire, ca ne sert a rien d'avoir deux poste pour le même travail
-p_Du coup, tu conte en choisir un et virer l'autre ou faire une merger and aquisitions (M&A) ?
+{ 
+  - e_ Finalement je commence a comprendre pourquoi ils m'ont viré.
+    e_ Je suis facilement émotif, et peut etre que je tenais trop a ce petit job misérable
+    e_ Tu as su bien manipuler mes émotions gamine. Mais il est temps de trouver une résolution a tout ça.
+    e_ ...Peut etre que la réalité est plus complexe qu'un lexique agile. 
+    p_ ....
+
+  - e_ Tu sais...C'est pas parce que tu te bats pour Elise que tu n'es pas comme moi.
+    e_ Agitez cet armes, avec la légitimité de l'hote de ses lieux, te rend pas plus sain que moi.
+    e_ A la fin de tout ce jeu, quand il ne restera plus que l'un de nous,
+    e_ qui sera réellement le gagnant de tout ça?
+}
+
+//~CheckCondition(condition)
+//e_Si le samurai et le cowboy sont si similaire, ca ne sert a rien d'avoir deux poste pour le même travail
+//p_Du coup, tu conte en choisir un et virer l'autre ou faire une merger and aquisitions (M&A) ?
 e_...
 ->LaRécompenseDesPerdants.PlayerActions
 
@@ -568,27 +573,43 @@ e_...
 
 =ATQ
 {
-e_La voie du samurai m'est venu car je croyais a être quelqu'un d'honnête et qui tient ces objectifs
-p_Pourquoi "croyais"? tu n'y crois plus maintenant ?
-e_Pas apres un certain licensiment
+  - e_ Je croyais que si j'étais honnête avec mes faiblesses et mes erreurs, je puourrais allé loin
+    p_ Mais ça n'as servit a rien 
+    e_ Mais maintenant je compte bien tout avoir, je suis un entrepreneur 
+    p_ me bassiner avec ta moral , pour finir par me dire ce genre de banalité. 
 
-p_Une raison particulière pour ce licensiment ?
-e_Aucune, j'étais un employé modele respecté dans l'entreprise et on m'a juste jeté pour raison financière
-p_Mais alors, pourquoi tu continue à croire encore en cette voie ?
-e_Probablement car ca me rapelle un temps meilleur
+    p_ Tu sais ton truc la il est bancal, et comment compte tu aboutir a ton délire? 
+    p_ en exploitant comme tu t'es fait exploiter?
+    e_ Tu peux pas comprendre ! je suis de l'autre coté de la barrière maintenant
+    e_ ce monde est cruel et je compte pas etre encore une fois la victime !
 }
 ~SetMana(Red)
 ~TakeDamage(1)
 ->LaRécompenseDesPerdants.Idle
 
 =DEF 
-{                        
-	-e_La voie du Cowboy m'est venu car je croyais que le charisme et force de caractère me manquait
-	 p_Est tu ne croie plus que ce n'est le cas ?
-   e_Maintenant, je pense juste que c'est une methode differente qui n'est pas ma preferée
-	
-	-p_Pourquoi ne pas être revenue a la voie du samurai, alors ?
-	 e_Parce que celle du cowboy change et ce changement me rassure que mon licensiment n'était pour rien
+{                 
+  e_Tu sait c'est un honneur de pouvoir travailler pour faire fonctionner une entreprise.
+  p_Je sais pas j'ai jamais travailler, mais je ne vois pas l'honneur dans l'exploitation qu'on fait de toi
+  e_Quelqu'un qui n'a jamais travailler ne pourra le comprendre.
+  e_Même si c'est dur, c'est le travail qui fait l'orgeil d'un véritable homme.
+
+  p_Mais tu n'as pas de resentiment envers ceux qui t'exploite ?
+  e_Comment je pourrais, il fait ce qu'il faut pour maintenir le bateau en place.
+  e_Il nous exploite pas, il nous diriguent pour qu'on le plus utilie possible a l'entreprise.
+  e_Il se tient tous derrière nous et abat ceux qui ne peuvent pas suivre pour le meilleur!
+  p_Non mais tu te rend compte de ce que tu me raconte là !
+
+  - e_ ... j'etais vraiment fière de mon travail et mon role, tu comprend ça ?
+    p_ J'ai fait que des job minable, j'ai un peu du mal a voir l'honneur dans ce genre d'exploitation.
+    e_ J'aurais du me douter que tu serais pas apte a comprendre.
+    e_ Tu visualise la chose de manière manichéenne, je chérie  avec amourr l'orgeuil tiré de mon travail,
+
+  - p_ Enfaite... je te comprend pas, mais tu gardes pas de ressentiment pour ceux qui t'on viré?
+    e_ Gamine... c'est toujours plus compliqué que ça. Des fois des choix sont fait pour le bien de tous.  
+    e_ je n'étais pas dans les meilleurs, et j'en tiens toute la responsabilité.
+    p_ ... Ce que tu racontes est lamentable, et j'en crois pas un seule mot.
+    p_ ça se voit que tu leurs en veux plus que tu veuilles le reconnaitre. Soit honnête avec toi même.
 }
 ~SetMana(Blue)
 ~TakeDamage(1)
@@ -596,31 +617,49 @@ e_Probablement car ca me rapelle un temps meilleur
 
 =TALK
 {
-	-e_
-	 p_
-   p_
-   e_
+	- p_ Je- 
+	  p_ Gamine n'essaye pas, je commence a comprendre comment tu fonctionne
+    n_ X tire sans prévenir un coup te touchant au niveau de l'épaule
+    p_ au moins  c'est clair, ça fait mal ton machin !
+    ~TakeDamage(1)
 }
 ~TakeDamage(1)
 ->LaRécompenseDesPerdants.Idle
 
 =ShotMatrix
 { bulletPWR :
-	-1: {bulletCLR:
-    e_Pourquoi me pousser sur la voie du Cowboy ?
-    p_Parce que tous change, la question est: est ce que tu va resté sur le coté ou foncé vers le soleil ?
-    e_T'as raison, je ne peu pas resté immobilisé par mon doute !
-    e_Il est temps d'allumer notre feu et de devenir les pionniers du numérique ! YAOUH
-    ->LaRécompenseDesPerdants.idle
-		-BLUE: ->cowboy Ending
+	-2: 
+    {bulletCLR:
+    - bulletCLR=="blue":
+      P_ ...maintenant que on est la.... la question est la suivante : que veut tu vraiment faire ?
+      e_ Tu ferais une bonne stagiaire.... tu as raison, je dois me ressaisir, mettons fin au doute.
+      e_ Je veux jouer selon leurs règle, je veux vraiment réussir, etre a jamais indépendant.
+      p_ Tu poursuit une chimère mais si c'est ce que tu veux allons-y une dernière fois.
+      n_ Emile tire solannellement une balle retentissante.
+      ->unAmourPourCeluiTire.idle
+    - bulletCLR=="red":
+      p_ Tu dis tout ses trucs sans la moindre conviction. tu utilises le meme langague que eue
+      p_ parce que ce lisenciment n'est pas ta défaite, prendre leurs code, te rendra pas meilleurs !
+      p_ Si tu veux profiter de cet occasion, pour etre meilleurs fait le a fond, sans les singuer !
+      e_ Merci beaucoup gamine...Mais t'es encore trop jeune pour comprendre.
+      e_ Je vais t'offrir une leçon qui te servira pour ta future carrière pro...soit pret.
+  	  ->CommentMeurtUnHommeDroit.idle
+    - bulletCLR=="violet"
+      e_ Tu es...proprement inssuportable, tu ne cesse d'envoyer des signe contradictoires.!
+      p_ Euh... c'est toi qui est contradictoire ! On comprend rien a ce que tu racontes ! 
+      p_ ça se voit que tu sais pas ce que tu fais ni raconte, on pipe rien a ce que tu dis.
+      e_ tu penses genre...je devrais trouver un milieux..une espèce de fusion comme sangoku et vegetta?
+      p_ ...Je lis pas vraiment de manga, désolé je suis un peu malaisé la je sais pas trop quoi te répondre
+      e_ Merci... je sais comment faire... je sais vers ou mener ma nouvelle carrière, mon entreprenariat.
+      p_ Franchement retournons a la bagarre, ce que tu racontes me donne proprement mal au crane.
 	}
 		
 	-2:{bulletCLR:
-    e_Pourquoi je retournerai sur la voie du Samurai ?
-    p_parce que ce lisenciment n'est pas ta défaite mais la défaite de ton ancienne entreprise !
-    p_un samurai n'est pas honorable pour les autres, mais pour lui-même et ces objectifs
-    e_Et un véritable samurai n'abandonne pas son objectif même devant la mort !
-    e_Et je compte te le demontré maintenant, mon ami
+    p_ Tu dis tout ses trucs sans la moindre conviction. tu utilises le meme langague que eue
+    p_ parce que ce lisenciment n'est pas ta défaite, prendre leurs code, te rendra pas meilleurs !
+    p_ Si tu veux profiter de cet occasion, pour etre meilleurs fait le a fond, sans les singuer !
+    e_ Merci beaucoup gamine...Mais t'es encore trop jeune pour comprendre.
+    e_ Je vais t'offrir une leçon qui te servira pour ta future carrière pro...soit pret.
 		-RED: ->samurai Ending
 
   -3:{bulletCLR:
@@ -632,6 +671,24 @@ e_Probablement car ca me rapelle un temps meilleur
     e_Mais maintenant, est tu prêt pour ce qui va arriver !
     p_ j'espere
 		-VIOLET: ->neutre Ending
+	}
+}
+
+
+=ShotMatrix
+{ bulletPWR :
+	-2: 
+    {bulletCLR:
+		  - bulletCLR=="blue":
+        b_ X ALLONS AU CLIMAX DE CE COMBAT$EMILE MONTRE MOI TOUTE TON INGENIOTÉ, MONTRE MOI TON ESPRIT D'ENTREPRENEUSE
+       -> LaSolitudeCommeModeDeVie.idle
+
+      - bulletCLR=="violet":
+        e_ Qu'est ce que tu crois faire a venir ici, me forcer a un choix et se plaindre du resultat!
+        e_ Tu me met dans une situation dont je ne produirait pas quelque chose de satisfaisant...
+        e_ Et tu utilisa pour diminuer mon travail et ma valeur ! Vous etes tous les mêmes !
+        e_ Mais cette fois, j'ai de quoi riposter! Je vais te monter ma valeur et te faire regretter tes actions !
+        ->LaRécompenseDesPerdants.idle
 	}
 }
 // //reset Mana
