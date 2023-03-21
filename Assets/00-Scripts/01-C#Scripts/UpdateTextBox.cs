@@ -9,6 +9,7 @@ public class UpdateTextBox : MonoBehaviour
 
     private void Start()
     {
+
         txt.GetComponent<TextlineUnwrapScript>();
     }
 
