@@ -57,7 +57,7 @@ public class InkManager : MonoBehaviour
     private void Start()
     {
         InitStory();
-        AdvanceStory();
+        currentTarget = _protaTxtBox;
     }
 
     private void Update()
@@ -77,33 +77,54 @@ public class InkManager : MonoBehaviour
                 
             }
 
-            if (!story.currentText.Contains("_"))Debug.LogError("text line is not appropriate - underscore '_' missing");
-
+            if (!story.currentText.Contains("_"))
+            {
+                LeanTween.scaleY(_enemyTxtBox, 0, 0.2f);
+                LeanTween.scaleY(_protaTxtBox, 0, 0.2f);
+                _mainTxtBox.GetComponent<UpdateTextBox>().UpdateText(story.currentText);
+                return;
+            }
+            
             string[] textlineSplits = story.currentText.Split('_');
             string target = textlineSplits[0].Trim();
             string content = textlineSplits[1].Trim();
 
-            DisplayTextline(target,content);
+            
+            DisplayDialogue(target,content);
         }
     }
 
-    void DisplayTextline(string target,string content)
+    void DisplayDialogue(string target,string content)
     {
         switch (target)
         {
-            case "n":
-                _mainTxtBox.GetComponent<UpdateTextBox>().UpdateText(content);
+            case "b":
+                BothSpeaking(content);
                 break;
 
             case "p":
-                _protaTxtBox.GetComponent<UpdateTextBox>().UpdateText(target,content);
+                if (currentTarget != _protaTxtBox) LeanTween.scaleY(_enemyTxtBox, 0, 0.2f);
+                currentTarget = _protaTxtBox;
+                _protaTxtBox.GetComponent<UpdateTextBox>().UpdateText(content);
                 break;
 
             case "e":
-                _enemyTxtBox.GetComponent<UpdateTextBox>().UpdateText(target, content);
+                if (currentTarget != _enemyTxtBox) LeanTween.scaleY(_protaTxtBox, 0, 0.2f);
+                currentTarget = _enemyTxtBox;
+                _enemyTxtBox.GetComponent<UpdateTextBox>().UpdateText( content);
                 break;
 
             default:break;
         }
+    }
+
+    void BothSpeaking(string txt)
+    {
+        if (!txt.Contains("$")) Debug.LogError("no non non moeva c pas comme ça");
+        string[] textlineSplits = txt.Split('$');
+        string player = textlineSplits[0].Trim();
+        string enemy = textlineSplits[1].Trim();
+        _protaTxtBox.GetComponent<UpdateTextBox>().UpdateText(player);
+        _enemyTxtBox.GetComponent<UpdateTextBox>().UpdateText(enemy);
     }
 }

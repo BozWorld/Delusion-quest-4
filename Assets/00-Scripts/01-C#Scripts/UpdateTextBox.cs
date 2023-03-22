@@ -9,12 +9,13 @@ public class UpdateTextBox : MonoBehaviour
 
     private void Start()
     {
-
+        transform.localScale = new Vector3(1, 0, 1);
         txt.GetComponent<TextlineUnwrapScript>();
     }
 
     public void UpdateText(string content)
     {
+        if (transform.localScale != Vector3.one) LeanTween.scaleY(gameObject, 1, 0.2f);
         txt.UnwrapTextline(content);
     }
 

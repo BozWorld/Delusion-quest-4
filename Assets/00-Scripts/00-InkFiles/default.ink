@@ -1,4 +1,6 @@
 INCLUDE bulletScript.ink
+INCLUDE Testing.ink
+
 VAR HP = 5
 // create variable for mana
 ->Intro
@@ -29,27 +31,26 @@ _________________________________
 Tu peux choisir dans quelle boite de dialogue le texte va s'afficher,
 pour ça faut absolument que tu précises qui parle.
 
-n -> pour le narrateur
+Pour le narrateur, t'as rien à mettre. Juste t'écris ton texte en prose et il se joue par défaut dans la box du narrateur
+
 p -> pour le player 
 e -> pour l'enemy
+b -> pour both*
 
-Si tu précises pas qui parle et/ou que tu mets pas le underscore,
-Unity t'enverras une erreur dans tous les cas.
-Le speaker indique qui parle et seulement qui parle,
-que le player soit en idle ou qu'il attaque ce sera toujours "p" en speaker
+*both c un cas particulier. D'abord tu précises b_ pour indiquer que les deux personnages vont s'exprimer en même temps.
+Par contre il faut que tu split ton texte pour bien que Unity reconnaisse qui dit quoi, tu fais ça avec le symbole "$"
+En pratique ça donne :
+b_ je pense A $ je pense B 
+le player va dire "je pense A" et en MEME TEMPS l'enemy va dire "je pense B"
 
 */
-===Debug===
-n_salut  
-p_prout 
-e_salut
-->END
+
 
 ===Intro===
-n_Quand un cœur ne trouve plus de réponse, il transforme l'inconscient collectif.
-n_Quand ça arrive, la seule solution pour endiguer le mal est de provoquer...
-n_ce qu'on appelle "une rupture de l'illusion" ou "Delusion Shift".
-n_Quand ça arrive j'appelle "mon héro" pour s'en occuper...
+Quand un cœur ne trouve plus de réponse, il transforme l'inconscient collectif.
+Quand ça arrive, la seule solution pour endiguer le mal est de provoquer...
+Ce qu'on appelle "une rupture de l'illusion" ou "Delusion Shift".
+Quand ça arrive j'appelle "mon héro" pour s'en occuper...
 -> idle
 
 =idle
@@ -102,14 +103,14 @@ p_ ah
 -2:
     { 
     -bulletCLR=="red":
-    n_ quelque chose venait de changer…
+    quelque chose venait de changer…
     
     e_ tes satannée balle n’aurons pas raison du feu en moi
     p_ alors continouns, trouvons comment eteindre ce feu ensemble !
     ->UneHistoireDEgo
     
     -bulletCLR=="blue":
-    n_ un point de bascule venait d’etre atteint….
+    un point de bascule venait d’etre atteint….
     
     e_ jolie coups…*************************nice shot my dear friends************************* désolé 
     e_ les belles actions font ressortir mon anglais
@@ -118,7 +119,7 @@ p_ ah
     ->CeluiQuiTireGagne
     
     -bulletCLR=="violet":
-    n_ un point de bascule venait d’etre atteint….
+    un point de bascule venait d’etre atteint….
     
     e_ jolie coups…*************************nice shot my dear friends************************* désolé 
     e_ les belles actions font ressortir mon anglais
