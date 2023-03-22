@@ -1,6 +1,8 @@
 INCLUDE bulletScript.ink
 INCLUDE Testing.ink
 
+INCLUDE Testing.ink
+
 VAR HP = 5
 // create variable for mana
 ->Intro
@@ -38,6 +40,7 @@ e -> pour l'enemy
 l -> elise
 c -> contextual interface
 n -> narrateur
+b -> pour both*
 b -> pour both*
 
 *both c un cas particulier. D'abord tu précises b_ pour indiquer que les deux personnages vont s'exprimer en même temps.
@@ -652,25 +655,6 @@ e_...
       p_ ...Je lis pas vraiment de manga, désolé je suis un peu malaisé la je sais pas trop quoi te répondre
       e_ Merci... je sais comment faire... je sais vers ou mener ma nouvelle carrière, mon entreprenariat.
       p_ Franchement retournons a la bagarre, ce que tu racontes me donne proprement mal au crane.
-	}
-		
-	-2:{bulletCLR:
-    p_ Tu dis tout ses trucs sans la moindre conviction. tu utilises le meme langague que eue
-    p_ parce que ce lisenciment n'est pas ta défaite, prendre leurs code, te rendra pas meilleurs !
-    p_ Si tu veux profiter de cet occasion, pour etre meilleurs fait le a fond, sans les singuer !
-    e_ Merci beaucoup gamine...Mais t'es encore trop jeune pour comprendre.
-    e_ Je vais t'offrir une leçon qui te servira pour ta future carrière pro...soit pret.
-		-RED: ->samurai Ending
-
-  -3:{bulletCLR:
-    e_Pourquoi m'envoyé des signes contradictoires, tu veux m'aider ou me l'aissé perdue ?
-    p_Tu as bien vu les similarité entre les deux, pourquoi ne pas les essayé de les fusionner pour innover ?
-    e_Comme quand Goku et Vegeta ont fusionner pour devenir Vegetto et vaincre la plus puissante version de BUU !
-    p_Je vois pas trop de quoi tu parle mais tant que tu capte l'idée
-    e_Et merci mon ami de m'avoir rappelé que l'innovation, c'est l'essence même de l'entreprenariat !
-    e_Mais maintenant, est tu prêt pour ce qui va arriver !
-    p_ j'espere
-		-VIOLET: ->neutre Ending
 	}
 }
 
