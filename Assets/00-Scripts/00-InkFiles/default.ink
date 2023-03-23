@@ -54,8 +54,8 @@ Quand ça arrive j'appelle "mon héro" pour s'en occuper...
 -> idle
 
 =idle
-e_ il est temps de confronter nos idées sur le marchées des idée 
-p_ ...D'une manière je vois ou tu veux en venir par la
+e_ IL EST TEMPS DE CONFRONTER NOS IDÉES SUR LE MARCHÉ DES IDÉES
+p_ ...hmm après réfléxion je pense voir ou tu vas avec ça
 ->PlayerTurn
 
 =PlayerTurn
@@ -69,6 +69,9 @@ p_ ...D'une manière je vois ou tu veux en venir par la
 {SetMana("red")}
 p_ emile attaque directement avec son katana
 e_ oh j'apprécie ta témérité mais ça ne sera pas suffisant
+e_ tu manques de motivation pour gagner cet bataille'
+e_ il faut que tu visualise ce combats comme "une expériences challengeante non rémunéré"
+p_ ...c'est possible de se faire rémunéré?
 -> Intro.idle
 
 =DEF
@@ -79,9 +82,9 @@ e_ j'ai toujours des options caché
 -> Intro.idle
 
 =TLK
-p_ mais avant que on s'étripe dis moi au moins qui est-tu?
+p_ Avant que on s'étripe dis moi au moins qui est-tu?
 e_ vaste question ou commencer mon récit...
-p_ après fin je demandais juste le strict minimum pour s'étriper,
+p_ après je demandais juste le strict minimum pour s'étriper.
 p_ pas la full histoire non plus
 e_ tout commence-
 p_ non en vrai le minimum
@@ -133,8 +136,55 @@ p_ ah
 -> END
 
 ===UneHistoireDEgo===
+Chaque humain est guidé par son propre ego
+et dans cela il y a quelque chose de magnifique
+qund deux ego se rencontrent, ils se confrontent
+dans cet étrange fatalité, née les coeur qui résonnent
+
+=idle
+e_ Oh chère camarade de bataille, le ressens-tu ?
+e_ Cette excitation du combat, cette chaleur ?
+e_ celle que on ne ressent qu'au début du sprint...
+e_ celle qu'on apperçois que proche de la release
+p_ Désolé, je ne parle pas anglais. Ça veut dire quoi "heat"...?
+b_ "Heat", c'est la passion, l'excitation, l'adrénaline.
+p_ Ah, ouais, je crois que je le ressens... ou un truc du genre ouai.
 ->END
 
+=PlayerTurn
++[ATQ]->UneHistoireDEgo.ATQ
++[DEF]->UneHistoireDEgo.DEF
++[TLK]->UneHistoireDEgo.TLK
++{bulletCLR!="empty"}[SHT]->UneHistoireDEgo.shootMatrix
+
+
+=ATQ
+{SetMana("red")}
+e_ X attaque Emil avec son katana, lui infligeant des dégâts.
+p_ surpris par le coups, Emil en profite malgré tout pour infliger un coups avec le flan de son arme
+~HP-= 1
+e_ TU N'EST PAS ASSEZ PROACTIF POUR GAGNER CETTE BATAILLE, 
+e_ ÇA FAIT DES MOIS QUE JE FAIS DES MELEE QUOTIDIENNE SUR MON PROJET
+p_ hein c'est qu-
+e_ DANS CE COMBAT NOUS SOMMES LES UNIQUES PRODUCT OWNER DE NOTRE PROJET
+p_ attend, je suis conf-
+b_ mais enfaite t'inventes des mots$COMBIEN A TU MIT DE STORY POINT DANS CE COMBAT
+e_ X réattaque juste derrrière le coups précédent infligeant une seconde salve de dégats
+~HP-= 1
+p_ va falloir que je sois plus vigilant contre lui..
+-> Intro.idle
+
+=DEF
+e_ X attaque Emil avec son katana, sans succès, emil c'étais mit en posture de défense
+e_ c'est bas de ta part... j'en attendais plus...
+e_ je vais surement devoir revoir ta vélocité au seins du projet
+p_ oui velocité, sprint, tout ça tout ça, j'ai compris.
+-> Intro.idle
+
+=TLK
+p_ ...Il y a quelque chose qui as changé tu t'exprimes plus de la meme manière
+e_ 
+-> Intro.idle
 ===CeluiQuiTireGagne
 ->END
 
