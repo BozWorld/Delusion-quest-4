@@ -9,7 +9,7 @@ VAR HP = 5
 
 _________________________________
 ///// READ ME /////
-
+ 
 _________________________________
 /// VARIABLES ///
 /// HP
@@ -140,6 +140,10 @@ Chaque humain est guidé par son propre ego
 et dans cela il y a quelque chose de magnifique
 qund deux ego se rencontrent, ils se confrontent
 dans cet étrange fatalité, née les coeur qui résonnent
+->DONE
+
+=shootMatrix
+->DONE
 
 =idle
 e_ Oh chère camarade de bataille, le ressens-tu ?
