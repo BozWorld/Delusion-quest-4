@@ -72,6 +72,7 @@ t_ la couleur bleu représente la facette cowboy ( C )
 t_ la couleur violet représente les deux facette en meme temps, son entreprenariat ( e )
 t_ les balles que vous tirez, le feront évolué en fonction de ses facette, 
 t_ changeant aussi ses coups et ses comportements.
+
 t_ Quand un cœur ne trouve plus de réponse, il transforme l'inconscient collectif.
 t_ Quand ça arrive, la seule solution pour endiguer le mal est de provoquer...
 t_ Ce qu'on appelle "une rupture de l'illusion" ou "Delusion Shift".r
@@ -80,8 +81,8 @@ T_ Quand ça arrive j'appelle "mon héro" pour s'en occuper...
 -> idle
 
 =idle
-e_ IL EST TEMPS DE CONFRONTER NOS IDÉES SUR LE MARCHÉ DES IDÉES
-p_ ...hmm après réfléxion je pense voir ou tu vas avec ça
+e_ IL EST TEMPS DE CONFRONTER NOS IDÉES SUR LE MARCHÉ DES IDÉES | C'est une entreprise dangereuse dans laquelle tu te lance, est tu prêt ? | Cette réunion commence a se faire longue
+p_ ...hmm après réfléxion je pense voir ou tu vas avec ça | si je ne suis pas prêt en plein milieu d'un combat, je ne le serais jamais ! | Attend ? On se connait ?!
 ->PlayerTurn
 
 =PlayerTurn
@@ -102,8 +103,8 @@ p_ ...c'est possible de se faire rémunéré?
 
 =DEF
 {SetMana("blue")}
-p_ vous vous preparez a recevoir un coup de katana...
-e_ j'ai toujours des options caché 
+p_ vous vous preparez a recevoir un coup de katana... | vous essayez de vous mettre en dehors de sa ligne de mire...
+e_ j'ai toujours des options caché | Une cible encore plus simple à tirer qu'un pigeon urbain
 //( perd une vie il tire une balle ) 
 -> Intro.idle
 
@@ -114,7 +115,7 @@ p_ après je demandais juste le strict minimum pour s'étriper.
 p_ pas la full histoire non plus
 e_ tout commence-
 p_ non en vrai le minimum
-e_ je suis le jeune patron d'une entreprise qui vends des des cours de développement personnelle
+e_ je suis le jeune patron d'une entreprise qui vends des cours de développement personnelle
 p_ ah
 -> Intro.idle
 
