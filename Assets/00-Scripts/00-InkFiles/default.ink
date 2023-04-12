@@ -74,7 +74,8 @@ t_ les balles que vous tirez, le feront évolué en fonction de ses facette,
 t_ changeant aussi ses coups et ses comportements.
 t_ Quand un cœur ne trouve plus de réponse, il transforme l'inconscient collectif.
 t_ Quand ça arrive, la seule solution pour endiguer le mal est de provoquer...
-t_ Ce qu'on appelle "une rupture de l'illusion" ou "Delusion Shift".
+t_ Ce qu'on appelle "une rupture de l'illusion" ou "Delusion Shift".r
+jrgogetjptgnjrgpno
 T_ Quand ça arrive j'appelle "mon héro" pour s'en occuper...
 -> idle
 
