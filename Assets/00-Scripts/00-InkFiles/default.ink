@@ -47,10 +47,35 @@ le player va dire "je pense A" et en MEME TEMPS l'enemy va dire "je pense B"
 
 
 ===Intro===
-Quand un cœur ne trouve plus de réponse, il transforme l'inconscient collectif.
-Quand ça arrive, la seule solution pour endiguer le mal est de provoquer...
-Ce qu'on appelle "une rupture de l'illusion" ou "Delusion Shift".
-Quand ça arrive j'appelle "mon héro" pour s'en occuper...
+/* ici il faudrait une bulle de texte tutoriel , qui me permette d'imaginer un narrateur de tutoriel */
+// -> expliquez les conditions de victoire et de défaites du jeu
+
+t_ Bienvenu,dans cette démo de DQ4. Dans ce jeu vous etes dans un combat en tour par tour
+t_ Contre un unique ennemis bien plus fort que vous, mais aupris au doute. 
+t_ il vous faudra user de ses emotions pour gagner
+t_ Vois choix le feront évoluer tout au long du combat, mais aussi provoqueront une conclusion unique.
+
+// -> expliquez comment fonctionne le système d'action, et le faite que les gain doivent etre supposez par le joueur en fonction de la situation
+
+t_ Dans ce contexte particulier, vous possédé un étrange pouvoir.
+t_ faisons que exploiter les émotions de votre adversaire Charge des balles.
+t_ tirez ses balles jusqu'à provoquez une conclusion.
+t_ Vous avez 4 type d'action : l'attaque ( ATK ) , la défense ( DEF ), la conversation ( PRL )
+t_ Chaque action auront une conséquence différentes dépends du contexte.
+t_ soyez attentive a ce que dit votre adversaire et ses réaction pour anticiper ses prochains coup.
+
+// Expliquez le principe de facette, et le faite de faire un mix de couleur
+t_ Dans une réalité distordu par votre adversaire, il est tiraillé entre 3 facette de lui meme.
+t_ dépends du contexte, les actions peuvent charger des balles, leurs couleurs représente ses facette.
+t_ la couleur rouge représente la facette samurai ( S ) 
+t_ la couleur bleu représente la facette cowboy ( C ) 
+t_ la couleur violet représente les deux facette en meme temps, son entreprenariat ( e )
+t_ les balles que vous tirez, le feront évolué en fonction de ses facette, 
+t_ changeant aussi ses coups et ses comportements.
+t_ Quand un cœur ne trouve plus de réponse, il transforme l'inconscient collectif.
+t_ Quand ça arrive, la seule solution pour endiguer le mal est de provoquer...
+t_ Ce qu'on appelle "une rupture de l'illusion" ou "Delusion Shift".
+T_ Quand ça arrive j'appelle "mon héro" pour s'en occuper...
 -> idle
 
 =idle
