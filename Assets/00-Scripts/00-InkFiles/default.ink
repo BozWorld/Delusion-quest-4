@@ -35,6 +35,8 @@ Pour le narrateur, t'as rien à mettre. Juste t'écris ton texte en prose et il 
 
 p -> pour le player 
 e -> pour l'enemy
+l -> elise
+c -> contextual interface
 b -> pour both*
 
 *both c un cas particulier. D'abord tu précises b_ pour indiquer que les deux personnages vont s'exprimer en même temps.
@@ -50,34 +52,34 @@ le player va dire "je pense A" et en MEME TEMPS l'enemy va dire "je pense B"
 /* ici il faudrait une bulle de texte tutoriel , qui me permette d'imaginer un narrateur de tutoriel */
 // -> expliquez les conditions de victoire et de défaites du jeu
 
-t_ Bienvenu,dans cette démo de DQ4. Dans ce jeu vous etes dans un combat en tour par tour
-t_ Contre un unique ennemis bien plus fort que vous, mais aupris au doute. 
-t_ il vous faudra user de ses emotions pour gagner
-t_ Vois choix le feront évoluer tout au long du combat, mais aussi provoqueront une conclusion unique.
+c_ Bienvenu,dans cette démo de DQ4. Dans ce jeu vous etes dans un combat en tour par tour
+c_ Contre un unique ennemis bien plus fort que vous, mais aupris au doute. 
+c_ il vous faudra user de ses emotions pour gagner
+c_ Vois choix le feront évoluer tout au long du combat, mais aussi provoqueront une conclusion unique.
 
 // -> expliquez comment fonctionne le système d'action, et le faite que les gain doivent etre supposez par le joueur en fonction de la situation
 
-t_ Dans ce contexte particulier, vous possédé un étrange pouvoir.
-t_ faisons que exploiter les émotions de votre adversaire Charge des balles.
-t_ tirez ses balles jusqu'à provoquez une conclusion.
-t_ Vous avez 4 type d'action : l'attaque ( ATK ) , la défense ( DEF ), la conversation ( PRL )
-t_ Chaque action auront une conséquence différentes dépends du contexte.
-t_ soyez attentive a ce que dit votre adversaire et ses réaction pour anticiper ses prochains coup.
+c_ Dans ce contexte particulier, vous possédé un étrange pouvoir.
+c_ faisons que exploiter les émotions de votre adversaire Charge des balles.
+c_ tirez ses balles jusqu'à provoquez une conclusion.
+c_ Vous avez 4 type d'action : l'attaque ( ATK ) , la défense ( DEF ), la conversation ( PRL )
+c_ Chaque action auront une conséquence différentes dépends du contexte.
+c_ soyez attentive a ce que dit votre adversaire et ses réaction pour anticiper ses prochains coup.
 
 // Expliquez le principe de facette, et le faite de faire un mix de couleur
-t_ Dans une réalité distordu par votre adversaire, il est tiraillé entre 3 facette de lui meme.
-t_ dépends du contexte, les actions peuvent charger des balles, leurs couleurs représente ses facette.
-t_ la couleur rouge représente la facette samurai ( S ) 
-t_ la couleur bleu représente la facette cowboy ( C ) 
-t_ la couleur violet représente les deux facette en meme temps, son entreprenariat ( e )
-t_ les balles que vous tirez, le feront évolué en fonction de ses facette, 
-t_ changeant aussi ses coups et ses comportements.
+c_ Dans une réalité distordu par votre adversaire, il est tiraillé entre 3 facette de lui meme.
+c_ dépends du contexte, les actions peuvent charger des balles, leurs couleurs représente ses facette.
+c_ la couleur rouge représente la facette samurai ( S ) 
+c_ la couleur bleu représente la facette cowboy ( C ) 
+c_ la couleur violet représente les deux facette en meme temps, son entreprenariat ( e )
+c_ les balles que vous tirez, le feront évolué en fonction de ses facette, 
+c_ changeant aussi ses coups et ses comportements.
 
-t_ Quand un cœur ne trouve plus de réponse, il transforme l'inconscient collectif.
-t_ Quand ça arrive, la seule solution pour endiguer le mal est de provoquer...
-t_ Ce qu'on appelle "une rupture de l'illusion" ou "Delusion Shift".r
-jrgogetjptgnjrgpno
-T_ Quand ça arrive j'appelle "mon héro" pour s'en occuper...
+//Elise prend la parole, elle dicte le ton pour le reste du combat
+l_ Quand un cœur ne trouve plus de réponse, il transforme l'inconscient collectif.
+l_ Quand ça arrive, la seule solution pour endiguer le mal est de provoquer...
+l_ Ce qu'on appelle "une rupture de l'illusion" ou "Delusion Shift".
+l_ Quand ça arrive j'appelle "mon héro" pour s'en occuper...
 -> idle
 
 =idle
@@ -92,13 +94,14 @@ p_ ...hmm après réfléxion je pense voir ou tu vas avec ça | si je ne suis pa
 +{bulletCLR!="empty"}[SHT]->Intro.shootMatrix
 
 =ATQ
-
-{SetMana("red")}
-p_ emile attaque directement avec son katana
-e_ oh j'apprécie ta témérité mais ça ne sera pas suffisant
-e_ tu manques de motivation pour gagner cet bataille'
-e_ il faut que tu visualise ce combats comme "une expériences challengeante non rémunéré"
-p_ ...c'est possible de se faire rémunéré?
+~SetMana(red)
+p_ emile attaque avec son katana frontalement, pas de temps a perdre !
+p_ si ce que tu veux c'est un vrai combat je peux te l'offrir ! #_fx_slash
+e_ Tu manques encore d'expérience ! je le sens dans tes coups et ta posture
+e_ Il faut que tu commence a visualiser ça comme...Hmmm..."une expérience challengeante non rémunéré"
+e_ l'ennemis vous repousse violament, vous infligeant des dégats
+~TakeDamage(1)
+p_ ...on peut etre rémunéré pour ça ? 
 -> Intro.idle
 
 =DEF
@@ -109,14 +112,53 @@ e_ j'ai toujours des options caché | Une cible encore plus simple à tirer qu'u
 -> Intro.idle
 
 =TLK
+{
+- p_ je m'appelle emile, je ne me souviens plus de qui je suis.
+  p_ mais on ma filé une mission, et un role donc je me défile pas !
+  p_ Je suis venu avec la ferme intention de te botter le cul ( s'il le faut ).
+  e_ hahaha, tu es confiante, j'apprécie, c'est un caractère que on recherche en entreprise.
+  -> Intro.idle
+
+- p_ ...Il y a un truc dans ta manière de parler qui est étrange...
+  p_ mais enfaite tu es qui au juste? 
+  e_ Drole de manière de faire la conversation.
+  e_ Mais je me nomme X, grand entrepreneur local!
+  -> Intro.idle
+
+- p_ ...Si tu es la c'est que il y a plus.
+  p_ Ici, seule ceux au terriblement au doute peuvent venir ici...
+  p_ comment t'es tu retrouvé la?
+  e_ Gamine, Je reconnais tes exploits mais ne pousse pas ta chance trop loin.
+  -> Intro.idle
+
+- p_ tu utilises un langages que tu ne maitrises pas.
+  p_ je le sens, je l'entend, tu es différent de ce que tu aspires etre.
+  p_ Emile ma donné le pouvoir de résoudre tout ses conflit a l'aide de cet armes.
+  p_ mais tant qu'il est encore temps on peut arriver a une autre conclusion.
+  e_ ...
+  -> Intro.idle
+
+- p_ Avant que on s'étripe dis moi au moins qui est-tu?
+  e_ vaste question ou commencer mon récit...
+  p_ après je demandais juste le strict minimum pour s'étriper.
+  p_ pas la full histoire non plus
+  e_ tout commence-
+  p_ non en vrai le minimum
+  e_ je suis le jeune patron d'une entreprise qui vends des des cours de développement personnelle...
+  e_ J'ai récemment fondé cet entreprises, je n'ai pas toujours fait ça...
+  p_ ...hm 
+  -> UniqueSequence1.idle
+}
+
 p_ Avant que on s'étripe dis moi au moins qui est-tu?
 e_ vaste question ou commencer mon récit...
 p_ après je demandais juste le strict minimum pour s'étriper.
 p_ pas la full histoire non plus
 e_ tout commence-
 p_ non en vrai le minimum
-e_ je suis le jeune patron d'une entreprise qui vends des cours de développement personnelle
-p_ ah
+e_ je suis le jeune patron d'une entreprise qui vends des des cours de développement personnelle...
+e_ J'ai récemment fondé cet entreprises, je n'ai pas toujours fait ça...
+p_ ...hm 
 -> Intro.idle
 
 =shootMatrix
@@ -124,40 +166,15 @@ p_ ah
 -1:
     {
     -bulletCLR=="red":
-    e_ ce n’est pas avec ça que tu te débarassera de moi !
+    e_ MONTRE MOI TOUT CE QUE TU AS DANS LE VENTRE
     ->Intro.idle
     -bulletCLR=="blue":
-    e_ ce n’est pas avec ça que tu te débarassera de moi !
+    E_ emile tire un coups portant a l'ennemis, C'EST PAS DU JEU !
+    e_ Cet étrange balle...Tu triches comme eue...
+    e_ Comme eue.. tu ne reconnais pas le travail et la volonté des individus...
+    e_ J'ai pas tricher ! Tu es capable de façonner un monde a ton image!
+    e_ encore heureux que j'ai le droit de te battre a ton propre jeu !
     ->Intro.idle
-    }
--2:
-    { 
-    -bulletCLR=="red":
-    quelque chose venait de changer…
-    
-    e_ tes satannée balle n’aurons pas raison du feu en moi
-    p_ alors continouns, trouvons comment eteindre ce feu ensemble !
-    ->UneHistoireDEgo
-    
-    -bulletCLR=="blue":
-    un point de bascule venait d’etre atteint….
-    
-    e_ jolie coups…*************************nice shot my dear friends************************* désolé 
-    e_ les belles actions font ressortir mon anglais
-    
-    p_ no hay problema
-    ->CeluiQuiTireGagne
-    
-    -bulletCLR=="violet":
-    un point de bascule venait d’etre atteint….
-    
-    e_ jolie coups…*************************nice shot my dear friends************************* désolé 
-    e_ les belles actions font ressortir mon anglais
-    
-    p_ no hay problema
-    ->CeluiQuiTireGagne
-    
-    
     }
 }
 -> END
