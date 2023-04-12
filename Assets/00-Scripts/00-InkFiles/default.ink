@@ -114,7 +114,7 @@ p_ après je demandais juste le strict minimum pour s'étriper.
 p_ pas la full histoire non plus
 e_ tout commence-
 p_ non en vrai le minimum
-e_ je suis le jeune patron d'une entreprise qui vends des des cours de développement personnel
+e_ je suis le jeune patron d'une entreprise qui vends des des cours de développement personnelle
 p_ ah
 -> Intro.idle
 
