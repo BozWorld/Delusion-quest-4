@@ -80,6 +80,7 @@ l_ Quand un cœur ne trouve plus de réponse, il transforme l'inconscient collec
 l_ Quand ça arrive, la seule solution pour endiguer le mal est de provoquer...
 l_ Ce qu'on appelle "une rupture de l'illusion" ou "Delusion Shift".
 l_ Quand ça arrive j'appelle "mon héro" pour s'en occuper...
+//test push
 -> idle
 
 =idle
