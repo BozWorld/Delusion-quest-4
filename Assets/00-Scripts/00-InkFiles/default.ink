@@ -80,7 +80,6 @@ l_ Quand un cœur ne trouve plus de réponse, il transforme l'inconscient collec
 l_ Quand ça arrive, la seule solution pour endiguer le mal est de provoquer...
 l_ Ce qu'on appelle "une rupture de l'illusion" ou "Delusion Shift".
 l_ Quand ça arrive j'appelle "mon héro" pour s'en occuper...
-//test push
 -> idle
 
 =idle
@@ -107,8 +106,11 @@ p_ ...on peut etre rémunéré pour ça ?
 
 =DEF
 {SetMana("blue")}
-p_ vous vous preparez a recevoir un coup de katana... | vous essayez de vous mettre en dehors de sa ligne de mire...
-e_ j'ai toujours des options caché | Une cible encore plus simple à tirer qu'un pigeon urbain
+p_ vous vous preparez a recevoir un coup de katana...
+e_ j'ai toujours des options caché 
+
+p_ vous essayez de vous mettre en dehors de sa ligne de mire...
+e_ Une cible encore plus simple à tirer qu'un pigeon urbain
 //( perd une vie il tire une balle ) 
 -> Intro.idle
 
@@ -117,7 +119,7 @@ e_ j'ai toujours des options caché | Une cible encore plus simple à tirer qu'u
 - p_ je m'appelle emile, je ne me souviens plus de qui je suis.
   p_ mais on ma filé une mission, et un role donc je me défile pas !
   p_ Je suis venu avec la ferme intention de te botter le cul ( s'il le faut ).
-  e_ hahaha, tu es confiante, j'apprécie, c'est un caractère que on recherche en entreprise.
+  e_ hahaha, tu es confiante, j'apprécie, c'est un caractère que l'on recherche en entreprise.
   -> Intro.idle
 
 - p_ ...Il y a un truc dans ta manière de parler qui est étrange...
@@ -127,7 +129,7 @@ e_ j'ai toujours des options caché | Une cible encore plus simple à tirer qu'u
   -> Intro.idle
 
 - p_ ...Si tu es la c'est que il y a plus.
-  p_ Ici, seule ceux au terriblement au doute peuvent venir ici...
+  p_ Ici, seule ceux en proie au doute peuvent venir ici...
   p_ comment t'es tu retrouvé la?
   e_ Gamine, Je reconnais tes exploits mais ne pousse pas ta chance trop loin.
   -> Intro.idle
@@ -236,6 +238,78 @@ e_
 -> Intro.idle
 ===CeluiQuiTireGagne
 ->END
+
+===CeluiQuiTire,Gagne===
+l_Tout un futur depandant d'un simple instant
+l_Une action capable d'en annuler une infinité
+l_Une action des plus simple qu'elle peut être fait par erreur
+l_mais un duel de volonté des plus érintant pour pouvoir l'accomplir
+
+-> Celui qui tire, gagne.idle
+===idle===
+~CheckCondition(condition)
+e_je pense qu'il est temps pour un meeting en distenciel | il manque plus qu'un buisson sec traversant le lieu de notre duel et se sera parfait !
+p_c'est obligé? je suis pas tres doué avec la technologie | Ca va être complexe vu où on est, mais un journal ou une canette vide t'irait ?
+->Titre.PlayerActions
+
+=PlayerActions
++[ATQ]->Titre.Atq
++[DEF]->Titre.Def
++[TALK]->Titre.Tlk
++[SHOT]->Titre.ShotMatrix
+
+=ATQ
+{
+e_Tu ne croie pas qu'il y a mieux a faire que d'agiter ton vulgaire sabre ici
+p_Au moins, je suis sûr de pas me tromper dans son utilisation! enfin j'espere
+
+e_Un duel de cowboy est une epreuve d'ingeniosité et de volonté, alors arrete de foncer comme un simple animal sauvage!
+p_Qui sait, on est peut être entrain de créer une nouvelle variante?
+e_J'en doute !
+}
+~SetMana(+rien)
+~TakeDamage(-2 pv)
+->Titre.Idle
+
+=DEF 
+{                        
+	-e_est ce tu sens la tension dans l'air mon ami, les questions qui t'aisaille pour savoir quoi faire ?
+	 p_Est ce que tu pourrais arreter de parler, j'essaye de me concentrer!
+   e_Tu laisse passer trop d'information par ta simple voix!
+	
+	-e_Alors mon ami, arrive tu a t'adapter a cette manière de vivre? C'est tuer ou être tuer par ici!
+	 p_J'ai l'habitude de devoir m'adapter sur le vif, je te dirais de faire plus attention a toi.
+   e_ Bien. Ta voix respire la confiance, mais ce n'est pas encore le cas pour ton visage!
+}
+~SetMana(+1 blue)
+~TakeDamage(-1 pv)
+->Titre.Idle
+
+=TALK
+{
+	-p_Tu est sur que tu veux pas revenir au combat au sabre? Perso, je me sentirais plus alaisse!
+	 e_Pour juste s'entretuer en étant debout chacun devant l'autre, ca serait stupide.
+   p_Le cliché d'un duel de cowboy, c'est pas ça mais avec plus de distance entre les deux adversaires?
+   e_Je.. Je l'avais pas vu sous êtes angle, Ils ont peut être moins de difference que je le croyais?
+}
+~SetMana(+1 red)
+->Titre.Idle
+
+=ShotMatrix
+{ bulletPWR :
+	-1: {bulletCLR:
+    e_Si les duels de samurai et cowboy peuvent être aussi similaire, est ce que d'autres aspect le sont aussi?
+    e_ AAHHH, tu me fait douté a cause de ce que tu as dit !
+    p_C'est juste un détail, tu sais ?
+    e_Les détails sont importants, que ce soit lors des paiements de taxe ou dans l'art des duels!
+    ->Intro.idle
+		-BLUE: ->cowboy 2
+	}
+		
+	-2:{bulletCLR:
+		-VIOLET: ->neutre 2
+	}
+}
 
 // //reset Mana
 // main_salut
