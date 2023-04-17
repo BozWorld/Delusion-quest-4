@@ -204,6 +204,25 @@ l_ il se joue l'héritage de l'humanité.
 ->DONE
 
 =shootMatrix
+=shootMatrix
+{bulletPWR:
+-2:
+    {
+    -bulletCLR=="red":
+    p_ Si Un vrai défis loyal que tu veux je vais te le donner.
+    e_ J'apprécie ta ténacité, c'est une qualité importante pour les noueaux métié
+    p_ Arrete avec ton charabiat et montre moi ce que tu sais réellement faire.
+    
+    ->Intro.idle
+    -bulletCLR=="blue":
+    E_ emile tire un coups portant a l'ennemis, C'EST PAS DU JEU !
+    e_ Cet étrange balle...Tu triches comme eue...
+    e_ Comme eue.. tu ne reconnais pas le travail et la volonté des individus...
+    e_ J'ai pas tricher ! Tu es capable de façonner un monde a ton image!
+    e_ encore heureux que j'ai le droit de te battre a ton propre jeu !
+    ->Intro.idle
+    }
+}
 ->DONE
 
 =PlayerTurn
@@ -223,7 +242,7 @@ p_ attend, je suis conf-
 b_ mais enfaite t'inventes des mots$COMBIEN A TU MIT DE STORY POINT DANS CE COMBAT
 b_ si tu veux la jouer comme ça, moi aussi je peux rendre les coups"$Montre moi ta vrai détermination!
 ~TakeDamage(1)
--> Intro.idle
+-> DeuxCoeursQuiSAiment.idle
 
 =DEF
 {
@@ -238,10 +257,9 @@ b_ si tu veux la jouer comme ça, moi aussi je peux rendre les coups"$Montre moi
 =TLK
 e_ ...plus le temps de parler on approche de la release!
 -> Intro.idle
-===CeluiQuiTireGagne
-->END
 
-===CeluiQuiTire,Gagne===
+
+===CeluiQuiTireGagne===
 l_Tout un futur depandant d'un simple instant
 l_Une action capable d'en annuler une infinité
 l_Une action des plus simple qu'elle peut être fait par erreur
