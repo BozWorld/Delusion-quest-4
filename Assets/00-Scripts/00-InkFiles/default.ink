@@ -203,27 +203,7 @@ l_ il se joue l'héritage de l'humanité.
 ->PlayerTurn
 ->DONE
 
-=shootMatrix
-=shootMatrix
-{bulletPWR:
--2:
-    {
-    -bulletCLR=="red":
-    p_ Si Un vrai défis loyal que tu veux je vais te le donner.
-    e_ J'apprécie ta ténacité, c'est une qualité importante pour les noueaux métié
-    p_ Arrete avec ton charabiat et montre moi ce que tu sais réellement faire.
-    
-    ->Intro.idle
-    -bulletCLR=="blue":
-    E_ emile tire un coups portant a l'ennemis, C'EST PAS DU JEU !
-    e_ Cet étrange balle...Tu triches comme eue...
-    e_ Comme eue.. tu ne reconnais pas le travail et la volonté des individus...
-    e_ J'ai pas tricher ! Tu es capable de façonner un monde a ton image!
-    e_ encore heureux que j'ai le droit de te battre a ton propre jeu !
-    ->Intro.idle
-    }
-}
-->DONE
+
 
 =PlayerTurn
 +[ATQ]->UneHistoireDEgo.ATQ
@@ -257,7 +237,114 @@ b_ si tu veux la jouer comme ça, moi aussi je peux rendre les coups"$Montre moi
 =TLK
 e_ ...plus le temps de parler on approche de la release!
 -> Intro.idle
+->DONE
 
+=shootMatrix
+{bulletPWR:
+-2:
+    {
+    -bulletCLR=="red":
+    p_ Si Un vrai défis loyal que tu veux je vais te le donner.
+    e_ J'apprécie ta ténacité, c'est une qualité importante pour les noueaux métié
+    p_ Arrete avec ton charabiat et montre moi ce que tu sais réellement faire.
+    
+    ->Intro.idle
+    -bulletCLR=="blue":
+    E_ emile tire un coups portant a l'ennemis, C'EST PAS DU JEU !
+    e_ Cet étrange balle...Tu triches comme eue...
+    e_ Comme eue.. tu ne reconnais pas le travail et la volonté des individus...
+    e_ J'ai pas tricher ! Tu es capable de façonner un monde a ton image!
+    e_ encore heureux que j'ai le droit de te battre a ton propre jeu !
+    ->Intro.idle
+    }
+}
+->DONE
+
+===DeuxCoeurQuiSAiment===
+l_ Dans le conflit, dans la tumulte, née l'amour.
+l_ différents des romances, ou différents des amitiés. 
+l_ Comprendre l'autre deviens vitale pour survivre.
+l_ Un combat, est une forme d'amour impossible
+l_ ce battre c'est donnée son coeur
+-> idle
+
+=idle 
+{
+  - e_ ...
+    p_ Qu'est ce qu'il t'arrives? t'es bien plus silencieu cet fois.
+    e_ Désolé je suis un peu ému.
+
+  - e_ ...J'apprécie que tu prenne toute cet histoire au sérieux gamine. 
+    p_ Ton charabiat en anglais abominable, n'enleve rien a ta volonté.
+    p_ Je n'avais pas d'autre choix que t'offrir un vrai challenge.
+
+  - p_ Combat moi avec toute la rage que tu possède.
+    p_ Montre moi toute la férocité de ton entreprise.
+    e_ CONCLUONS SE SPRINT!
+}
+->PlayerTurn
+->DONE
+
+
+
+=PlayerTurn
++[ATQ]->UneHistoireDEgo.ATQ
++[DEF]->UneHistoireDEgo.DEF
++[TLK]->UneHistoireDEgo.TLK
++{bulletCLR!="empty"}[SHT]->UneHistoireDEgo.shootMatrix
+
+
+=ATQ
+{SetMana("red")}
+{
+  - e_ ON SE RAPPROCHE ENFIN DE LA RELEASE !
+    p_ JE COMMENCE A PIGER CE QUE TU DIS !
+    ~TakeDamage(1)
+    {SetMana("purple")}
+
+  - e_ Donne ton coeur une dernière fois au combat !
+    p_ Je comptais donnée mon coeur au combat, avant que tu me dises ton truc la ! 
+    ~TakeDamage(1)
+    {SetMana("purple")}
+}
+
+-> DeuxCoeursQuiSAiment.idle
+
+=DEF
+{
+  - e_ Tu peux repousser la deadline mais elle reviens toujours !
+    p_ je repousse aucun mot en anglais moi ! euh... je réfléchis juste un peu
+
+  - e_ Il est temps de la réunion !
+    p_ Laisse moi réfléchir un peu plus longtemps !
+}
+-> Intro.idle
+
+=TLK
+e_ ...plus le temps de parler on approche de la release!
+-> Intro.idle
+->DONE
+
+=shootMatrix
+{bulletPWR:
+-2:
+    {
+    -bulletCLR=="red":
+    p_ Si Un vrai défis loyal que tu veux je vais te le donner.
+    e_ J'apprécie ta ténacité, c'est une qualité importante pour les noueaux métié
+    p_ Arrete avec ton charabiat et montre moi ce que tu sais réellement faire.
+    
+    ->Intro.idle
+    -bulletCLR=="blue":
+    E_ emile tire un coups portant a l'ennemis, C'EST PAS DU JEU !
+    e_ Cet étrange balle...Tu triches comme eue...
+    e_ Comme eue.. tu ne reconnais pas le travail et la volonté des individus...
+    e_ J'ai pas tricher ! Tu es capable de façonner un monde a ton image!
+    e_ encore heureux que j'ai le droit de te battre a ton propre jeu !
+    ->Intro.idle
+    }
+}
+->DONE
 
 ===CeluiQuiTireGagne===
 l_Tout un futur depandant d'un simple instant
@@ -265,11 +352,13 @@ l_Une action capable d'en annuler une infinité
 l_Une action des plus simple qu'elle peut être fait par erreur
 l_mais un duel de volonté des plus érintant pour pouvoir l'accomplir
 
--> Celui qui tire, gagne.idle
+-> CeluiQuiTireGagne.idle
+
 ===idle===
 ~CheckCondition(condition)
 e_je pense qu'il est temps pour un meeting en distenciel | il manque plus qu'un buisson sec traversant le lieu de notre duel et se sera parfait !
 p_c'est obligé? je suis pas tres doué avec la technologie | Ca va être complexe vu où on est, mais un journal ou une canette vide t'irait ?
+// c'est obligé? je suis plus doué avec la castagne que la technologie
 ->Titre.PlayerActions
 
 =PlayerActions
@@ -280,14 +369,13 @@ p_c'est obligé? je suis pas tres doué avec la technologie | Ca va être comple
 
 =ATQ
 {
-e_Tu ne croie pas qu'il y a mieux a faire que d'agiter ton vulgaire sabre ici
-p_Au moins, je suis sûr de pas me tromper dans son utilisation! enfin j'espere
+  - e_Tu ne croie pas qu'il y a mieux a faire que d'agiter ton vulgaire sabre ici
+    p_Au moins, je suis sûr de pas me tromper dans son utilisation! enfin j'espere
 
-e_Un duel de cowboy est une epreuve d'ingeniosité et de volonté, alors arrete de foncer comme un simple animal sauvage!
-p_Qui sait, on est peut être entrain de créer une nouvelle variante?
-e_J'en doute !
+  - e_Un duel de cowboy est une epreuve d'ingeniosité et de volonté, alors arrete de foncer comme un simple animal sauvage!
+    p_Qui sait, on est peut être entrain de créer une nouvelle variante?
+    e_J'en doute !
 }
-~SetMana(+rien)
 ~TakeDamage(-2 pv)
 ->Titre.Idle
 
