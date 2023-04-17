@@ -83,8 +83,8 @@ l_ Quand ça arrive j'appelle "mon héro" pour s'en occuper...
 -> idle
 
 =idle
-e_ IL EST TEMPS DE CONFRONTER NOS IDÉES SUR LE MARCHÉ DES IDÉES | C'est une entreprise dangereuse dans laquelle tu te lance, est tu prêt ? | Cette réunion commence a se faire longue
-p_ ...hmm après réfléxion je pense voir ou tu vas avec ça | si je ne suis pas prêt en plein milieu d'un combat, je ne le serais jamais ! | Attend ? On se connait ?!
+e_{ IL EST TEMPS DE CONFRONTER NOS IDÉES SUR LE MARCHÉ DES IDÉES | C'est une entreprise dangereuse dans laquelle tu te lance, est tu prêt ? | Cette réunion commence a se faire longue}
+p_ {...hmm après réfléxion je pense voir ou tu vas avec ça | si je ne suis pas prêt en plein milieu d'un combat, je ne le serais jamais ! | Attend ? On se connait ?!}
 ->PlayerTurn
 
 =PlayerTurn
@@ -106,11 +106,8 @@ p_ ...on peut etre rémunéré pour ça ?
 
 =DEF
 {SetMana("blue")}
-p_ vous vous preparez a recevoir un coup de katana...
-e_ j'ai toujours des options caché 
-
-p_ vous essayez de vous mettre en dehors de sa ligne de mire...
-e_ Une cible encore plus simple à tirer qu'un pigeon urbain
+p_ {vous vous preparez a recevoir un coup de katana... | vous essayez de vous mettre en dehors de sa ligne de mire...}
+e_ {j'ai toujours des options caché | Une cible encore plus simple à tirer qu'un pigeon urbain}
 //( perd une vie il tire une balle ) 
 -> Intro.idle
 
@@ -152,16 +149,6 @@ e_ Une cible encore plus simple à tirer qu'un pigeon urbain
   p_ ...hm 
   -> UniqueSequence1.idle
 }
-
-p_ Avant que on s'étripe dis moi au moins qui est-tu?
-e_ vaste question ou commencer mon récit...
-p_ après je demandais juste le strict minimum pour s'étriper.
-p_ pas la full histoire non plus
-e_ tout commence-
-p_ non en vrai le minimum
-e_ je suis le jeune patron d'une entreprise qui vends des des cours de développement personnelle...
-e_ J'ai récemment fondé cet entreprises, je n'ai pas toujours fait ça...
-p_ ...hm 
 -> Intro.idle
 
 =shootMatrix
@@ -183,24 +170,60 @@ p_ ...hm
 -> END
 
 ===UneHistoireDEgo===
-Chaque humain est guidé par son propre ego
-et dans cela il y a quelque chose de magnifique
-qund deux ego se rencontrent, ils se confrontent
-dans cet étrange fatalité, née les coeur qui résonnent
+l_ chaque humain, trouve son ego dans les récit de l'imaginaire collectif
+l_ Chacun, y voit ce qu'il aspire a etre, une référence a envier.
+l_ Quand deux ego se rencontre, ils se confrontent.
+l_ Dans ce combat, se joue plus que la victoire ou la défaite.
+l_ il se joue l'héritage de l'humanité.
+-> idle
+
+=idle 
+{
+  - e_ Oh chère camarade de bataille, le ressens-tu ? Cette excitation du combat, cette chaleur ?
+    e_ {celle que on ne ressent qu'au début du sprint... | e_ celle qu'on apperçois que proche de la release}
+    p_ {j'ai désagréablement l'impression d'arrivé a comprendre ce que tu racontes. | J'ai compris c'est bon !}
+
+  - e_ celle qu'on apperçois que proche de la release
+    J'ai compris c'est bon !
+
+  - p_ Arrete avec ce langage en vrai.
+    p_ Moi cet bagarre je veux la faire j'y crois 
+    p_ Mais on met tout les deux nos coeur en jeux. Parle moi franchement laisse cet posture.
+    {SetMana("purple")}
+
+  - e_ j'utilises pas tout ses mots pour rien.
+    e_ Moi en toute ses choses la j'y crois.
+    e_ L'agilité, le monde de demain, la fléxiblité, le remote tout ses choses la.
+    p_ ça se voit que tu viens pas de ce monde. montre moi ce qu'il y a réellement dans ton coeur.
+    {SetMana("purple")}
+
+
+
+}
+->PlayerTurn
 ->DONE
 
 =shootMatrix
+=shootMatrix
+{bulletPWR:
+-2:
+    {
+    -bulletCLR=="red":
+    p_ Si Un vrai défis loyal que tu veux je vais te le donner.
+    e_ J'apprécie ta ténacité, c'est une qualité importante pour les noueaux métié
+    p_ Arrete avec ton charabiat et montre moi ce que tu sais réellement faire.
+    
+    ->Intro.idle
+    -bulletCLR=="blue":
+    E_ emile tire un coups portant a l'ennemis, C'EST PAS DU JEU !
+    e_ Cet étrange balle...Tu triches comme eue...
+    e_ Comme eue.. tu ne reconnais pas le travail et la volonté des individus...
+    e_ J'ai pas tricher ! Tu es capable de façonner un monde a ton image!
+    e_ encore heureux que j'ai le droit de te battre a ton propre jeu !
+    ->Intro.idle
+    }
+}
 ->DONE
-
-=idle
-e_ Oh chère camarade de bataille, le ressens-tu ?
-e_ Cette excitation du combat, cette chaleur ?
-e_ celle que on ne ressent qu'au début du sprint...
-e_ celle qu'on apperçois que proche de la release
-p_ Désolé, je ne parle pas anglais. Ça veut dire quoi "heat"...?
-b_ "Heat", c'est la passion, l'excitation, l'adrénaline.
-p_ Ah, ouais, je crois que je le ressens... ou un truc du genre ouai.
-->END
 
 =PlayerTurn
 +[ATQ]->UneHistoireDEgo.ATQ
@@ -212,34 +235,31 @@ p_ Ah, ouais, je crois que je le ressens... ou un truc du genre ouai.
 =ATQ
 {SetMana("red")}
 e_ X attaque Emil avec son katana, lui infligeant des dégâts.
-p_ surpris par le coups, Emil en profite malgré tout pour infliger un coups avec le flan de son arme
-~HP-= 1
+p_ surpris par le coups, Emil en profite malgré tout pour infliger un coups avec le flan de son armees
 e_ TU N'EST PAS ASSEZ PROACTIF POUR GAGNER CETTE BATAILLE, 
-e_ ÇA FAIT DES MOIS QUE JE FAIS DES MELEE QUOTIDIENNE SUR MON PROJET
-p_ hein c'est qu-
 e_ DANS CE COMBAT NOUS SOMMES LES UNIQUES PRODUCT OWNER DE NOTRE PROJET
 p_ attend, je suis conf-
 b_ mais enfaite t'inventes des mots$COMBIEN A TU MIT DE STORY POINT DANS CE COMBAT
-e_ X réattaque juste derrrière le coups précédent infligeant une seconde salve de dégats
-~HP-= 1
-p_ va falloir que je sois plus vigilant contre lui..
--> Intro.idle
+b_ si tu veux la jouer comme ça, moi aussi je peux rendre les coups"$Montre moi ta vrai détermination!
+~TakeDamage(1)
+-> DeuxCoeursQuiSAiment.idle
 
 =DEF
-e_ X attaque Emil avec son katana, sans succès, emil c'étais mit en posture de défense
-e_ c'est bas de ta part... j'en attendais plus...
-e_ je vais surement devoir revoir ta vélocité au seins du projet
-p_ oui velocité, sprint, tout ça tout ça, j'ai compris.
+{
+  - e_ Tu peux repousser la deadline mais elle reviens toujours !
+    p_ je repousse aucun mot en anglais moi ! euh... je réfléchis juste un peu
+
+  - e_ Il est temps de la réunion !
+    p_ Laisse moi réfléchir un peu plus longtemps !
+}
 -> Intro.idle
 
 =TLK
-p_ ...Il y a quelque chose qui as changé tu t'exprimes plus de la meme manière
-e_ 
+e_ ...plus le temps de parler on approche de la release!
 -> Intro.idle
-===CeluiQuiTireGagne
-->END
 
-===CeluiQuiTire,Gagne===
+
+===CeluiQuiTireGagne===
 l_Tout un futur depandant d'un simple instant
 l_Une action capable d'en annuler une infinité
 l_Une action des plus simple qu'elle peut être fait par erreur
