@@ -300,12 +300,12 @@ l_ ce battre c'est donnée son coeur
   - e_ ON SE RAPPROCHE ENFIN DE LA RELEASE !
     p_ JE COMMENCE A PIGER CE QUE TU DIS !
     ~TakeDamage(1)
-    {SetMana("purple")}
+    {SetMana("red")}
 
   - e_ Donne ton coeur une dernière fois au combat !
     p_ Je comptais donnée mon coeur au combat, avant que tu me dises ton truc la ! 
     ~TakeDamage(1)
-    {SetMana("purple")}
+    {SetMana("red")}
 }
 
 -> DeuxCoeursQuiSAiment.idle
@@ -313,9 +313,11 @@ l_ ce battre c'est donnée son coeur
 =DEF
 {
   - p_ Bah alors grand père on a du mal a suivre la cadence!
+    {SetMana("blue")}
 
   - e_ C'est a cause des gens comme toi que j'ai tout perdu !
     p_ Je suis pas responsable de tes échecs!
+    {SetMana("blue")}
 
     
 }
@@ -326,7 +328,7 @@ e_ je vois que t'es épuisé...prend ça.
 e_ Je ne veux pas que tu blame ton échec sur des injustices.
 p_ ...J'aurais effectivement fait ça, mais crois pas que ...
 p_ ... T'es une chance de me vaincre ! 
-{SetMana("purple")}
+{SetMana("blue")}
 
 -> Intro.idle
 ->DONE
