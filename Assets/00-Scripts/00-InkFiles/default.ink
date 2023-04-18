@@ -318,19 +318,109 @@ e_J'en doute !
 =ShotMatrix
 { bulletPWR :
 	-1: {bulletCLR:
+		-BLUE: ->cowboy 3
+	}
+		
+	-2:{bulletCLR:
     e_Si les duels de samurai et cowboy peuvent être aussi similaire, est ce que d'autres aspect le sont aussi?
     e_ AAHHH, tu me fait douté a cause de ce que tu as dit !
     p_C'est juste un détail, tu sais ?
     e_Les détails sont importants, que ce soit lors des paiements de taxe ou dans l'art des duels!
     ->Intro.idle
-		-BLUE: ->cowboy 2
-	}
-		
-	-2:{bulletCLR:
-		-VIOLET: ->neutre 2
+		-VIOLET: ->LaRécompenseDesPerdants
 	}
 }
 
+
+===LaRécompenseDesPerdants===
+l_On dit que le vainqueur gagne tous
+l_Mais ca ne veut pas dire que le perdant ne recoit rien
+l_Il obtient un questionnement
+l_Un questionnement sur ces raisons, sur ces actions, sur ces résultats
+l_Et de pars cette récompense, il en sortira plus grandit que beaucoup de vainqueur
+
+-> LaRécompenseDesPerdants.idle
+===idle===
+~CheckCondition(condition)
+e_Si le samurai et le cowboy sont si similaire, ca ne sert a rien d'avoir deux poste pour le même travail
+p_Du coup, tu conte en choisir un et virer l'autre ou faire une merger and aquisitions (M&A) ?
+e_...
+->LaRécompenseDesPerdants.PlayerActions
+
+=PlayerActions
++[ATQ]->LaRécompenseDesPerdants.Atq
++[DEF]->LaRécompenseDesPerdants.Def
++[TALK]->LaRécompenseDesPerdants.Tlk
++[SHOT]->LaRécompenseDesPerdants.ShotMatrix
+
+=ATQ
+{
+e_La voie du samurai m'est venu car je croyais a être quelqu'un d'honnête et qui tient ces objectifs
+p_Pourquoi "croyais"? tu n'y crois plus maintenant ?
+e_Pas apres un certain licensiment
+
+p_Une raison particulière pour ce licensiment ?
+e_Aucune, j'étais un employé modele respecté dans l'entreprise et on m'a juste jeté pour raison financière
+p_Mais alors, pourquoi tu continue à croire encore en cette voie ?
+e_Probablement car ca me rapelle un temps meilleur
+}
+~SetMana(Red)
+~TakeDamage(1)
+->LaRécompenseDesPerdants.Idle
+
+=DEF 
+{                        
+	-e_La voie du Cowboy m'est venu car je croyais que le charisme et force de caractère me manquait
+	 p_Est tu ne croie plus que ce n'est le cas ?
+   e_Maintenant, je pense juste que c'est une methode differente qui n'est pas ma preferée
+	
+	-p_Pourquoi ne pas être revenue a la voie du samurai, alors ?
+	 e_Parce que celle du cowboy change et ce changement me rassure que mon licensiment n'était pour rien
+}
+~SetMana(Blue)
+~TakeDamage(1)
+->LaRécompenseDesPerdants.Idle
+
+=TALK
+{
+	-e_
+	 p_
+   p_
+   e_
+}
+~TakeDamage(1)
+->LaRécompenseDesPerdants.Idle
+
+=ShotMatrix
+{ bulletPWR :
+	-1: {bulletCLR:
+    e_Pourquoi me pousser sur la voie du Cowboy ?
+    p_Parce que tous change, la question est: est ce que tu va resté sur le coté ou foncé vers le soleil ?
+    e_T'as raison, je ne peu pas resté immobilisé par mon doute !
+    e_Il est temps d'allumer notre feu et de devenir les pionniers du numérique ! YAOUH
+    ->LaRécompenseDesPerdants.idle
+		-BLUE: ->cowboy Ending
+	}
+		
+	-2:{bulletCLR:
+    e_Pourquoi je retournerai sur la voie du Samurai ?
+    p_parce que ce lisenciment n'est pas ta défaite mais la défaite de ton ancienne entreprise !
+    p_un samurai n'est pas honorable pour les autres, mais pour lui-même et ces objectifs
+    e_Et un véritable samurai n'abandonne pas son objectif même devant la mort !
+    e_Et je compte te le demontré maintenant, mon ami
+		-RED: ->samurai Ending
+
+  -3:{bulletCLR:
+    e_Pourquoi m'envoyé des signes contradictoires, tu veux m'aider ou me l'aissé perdue ?
+    p_Tu as bien vu les similarité entre les deux, pourquoi ne pas les essayé de les fusionner pour innover ?
+    e_Comme quand Goku et Vegeta ont fusionner pour devenir Vegetto et vaincre la plus puissante version de BUU !
+    p_Je vois pas trop de quoi tu parle mais tant que tu capte l'idée
+    e_Et merci mon ami de m'avoir rappelé que l'innovation, c'est l'essence même de l'entreprenariat !
+    e_Mais maintenant, est tu prêt pour ce qui va arriver !
+    p_ j'espere
+		-VIOLET: ->neutre Ending
+	}
+}
 // //reset Mana
 // main_salut
 // enemy_yo yyyyo YO
