@@ -312,16 +312,22 @@ l_ ce battre c'est donnée son coeur
 
 =DEF
 {
-  - e_ Tu peux repousser la deadline mais elle reviens toujours !
-    p_ je repousse aucun mot en anglais moi ! euh... je réfléchis juste un peu
+  - p_ Bah alors grand père on a du mal a suivre la cadence!
 
-  - e_ Il est temps de la réunion !
-    p_ Laisse moi réfléchir un peu plus longtemps !
+  - e_ C'est a cause des gens comme toi que j'ai tout perdu !
+    p_ Je suis pas responsable de tes échecs!
+
+    
 }
 -> Intro.idle
 
 =TLK
-e_ ...plus le temps de parler on approche de la release!
+e_ je vois que t'es épuisé...prend ça.
+e_ Je ne veux pas que tu blame ton échec sur des injustices.
+p_ ...J'aurais effectivement fait ça, mais crois pas que ...
+p_ ... T'es une chance de me vaincre ! 
+{SetMana("purple")}
+
 -> Intro.idle
 ->DONE
 
@@ -330,18 +336,22 @@ e_ ...plus le temps de parler on approche de la release!
 -2:
     {
     -bulletCLR=="red":
-    p_ Si Un vrai défis loyal que tu veux je vais te le donner.
-    e_ J'apprécie ta ténacité, c'est une qualité importante pour les noueaux métié
-    p_ Arrete avec ton charabiat et montre moi ce que tu sais réellement faire.
-    
-    ->Intro.idle
+    b_ FINISSONS CE COMBAT$ PREPARE TOI A UNE RUPTURE DE L'ILLUSION
+    ->CommentMeurtUnHommeDroit.idle
+    -bulletCLR=="violet":
+    e_ Brouillers les pistes t'amenera a rien.
+    e_ Je vois que tu essayes de me titiler de me faire perdre la raison.
+    e_ Mais ça n'arrivera pas, je crois en mes motivations.
+    e_ prèpare toi a tirer tes dernières balles 
+    ->LaRecompenseDesPerdants.idle
+    }
+-1:
+    {
     -bulletCLR=="blue":
-    E_ emile tire un coups portant a l'ennemis, C'EST PAS DU JEU !
-    e_ Cet étrange balle...Tu triches comme eue...
-    e_ Comme eue.. tu ne reconnais pas le travail et la volonté des individus...
-    e_ J'ai pas tricher ! Tu es capable de façonner un monde a ton image!
-    e_ encore heureux que j'ai le droit de te battre a ton propre jeu !
-    ->Intro.idle
+    e_ Tu vois pas plus que les autres ! Avec vos combines
+    e_ Je suis un honnete travailleurs moi, j'ai fait ça toute ma vie.
+    e_ Mais pourrez jamais comprendre ! JE PEUX JOUER AU MEME JEU QUE VOUS !
+    ->LeGoutDeLaVictoire.idle
     }
 }
 ->DONE
