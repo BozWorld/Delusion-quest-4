@@ -61,16 +61,16 @@ c_ Vois choix le feront évoluer tout au long du combat, mais aussi provoqueront
 
 c_ Dans ce contexte particulier, vous possédé un étrange pouvoir.
 c_ faisons que exploiter les émotions de votre adversaire Charge des balles.
-c_ tirez ses balles jusqu'à provoquez une conclusion.
-c_ Vous avez 4 type d'action : l'attaque ( ATK ) , la défense ( DEF ), la conversation ( PRL )
+c_ tirez ses balles jusqu'à provoquez une conclusion ( TIR ) .
+c_ Vous avez 4 type d'action avec le tir : l'attaque ( ATK ) , la défense ( DEF ), la conversation ( PRL )
 c_ Chaque action auront une conséquence différentes dépends du contexte.
 c_ soyez attentive a ce que dit votre adversaire et ses réaction pour anticiper ses prochains coup.
 
 // Expliquez le principe de facette, et le faite de faire un mix de couleur
-c_ Dans une réalité distordu par votre adversaire, il est tiraillé entre 3 facette de lui meme.
-c_ dépends du contexte, les actions peuvent charger des balles, leurs couleurs représente ses facette.
-c_ la couleur rouge représente la facette samurai ( S ) 
-c_ la couleur bleu représente la facette cowboy ( C ) 
+c_ Dans une réalité distordu par votre adversaire, tiraillé entre 3 facette de lui meme.
+c_ dépendant du contexte, les actions peuvent charger des balles, leurs couleurs représente ses facette.
+c_ la couleur rouge représente la facette samurai ( S )  // sa fierté ?
+c_ la couleur bleu représente la facette cowboy ( C ) // Sa motivation ?
 c_ la couleur violet représente les deux facette en meme temps, son entreprenariat ( e )
 c_ les balles que vous tirez, le feront évolué en fonction de ses facette, 
 c_ changeant aussi ses coups et ses comportements.
@@ -83,8 +83,8 @@ l_ Quand ça arrive j'appelle "mon héro" pour s'en occuper...
 -> idle
 
 =idle
-e_{ IL EST TEMPS DE CONFRONTER NOS IDÉES SUR LE MARCHÉ DES IDÉES | C'est une entreprise dangereuse dans laquelle tu te lance, est tu prêt ? | Cette réunion commence a se faire longue}
-p_ {...hmm après réfléxion je pense voir ou tu vas avec ça | si je ne suis pas prêt en plein milieu d'un combat, je ne le serais jamais ! | Attend ? On se connait ?!}
+e_ { Ainsi quelqu'un est venu me défié dans mon open-space...Moi Algor, CEO d'une petite startup. |  C'est une entreprise dangereuse dans laquelle tu te lance, est tu prêt ? | IL EST TEMPS DE CONFRONTER NOS IDÉES SUR LE MARCHÉ DES IDÉES | Cette réunion commence a se faire longue }
+p_ {  Je suppose que tu sais pourquoi je suis la. Je me nomme Emile...Attend  quoi? | Si je ne suis pas prêt en plein milieu d'un combat, je ne le serais jamais. | ! ...hmm après réfléxion je pense voir ou tu vas avec ça | Attend ? On se connait ?! }
 ->PlayerTurn
 
 =PlayerTurn
