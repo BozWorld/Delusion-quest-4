@@ -37,6 +37,7 @@ p -> pour le player
 e -> pour l'enemy
 l -> elise
 c -> contextual interface
+n -> narrateur
 b -> pour both*
 
 *both c un cas particulier. D'abord tu précises b_ pour indiquer que les deux personnages vont s'exprimer en même temps.
@@ -84,7 +85,7 @@ l_ Quand ça arrive j'appelle "mon héro" pour s'en occuper...
 
 =idle
 e_ { Ainsi quelqu'un est venu me défié dans mon open-space...Moi Algor, CEO d'une petite startup. |  C'est une entreprise dangereuse dans laquelle tu te lance, est tu prêt ? | IL EST TEMPS DE CONFRONTER NOS IDÉES SUR LE MARCHÉ DES IDÉES | Cette réunion commence a se faire longue }
-p_ {  Je suppose que tu sais pourquoi je suis la. Je me nomme Emile...Attend  quoi? | Si je ne suis pas prêt en plein milieu d'un combat, je ne le serais jamais. | ! ...hmm après réfléxion je pense voir ou tu vas avec ça | Attend ? On se connait ?! }
+p_ {  Je suppose que tu sais pourquoi je suis la. Je me nomme Emile...Attend  quoi? | Si je ne suis pas prêt en plein milieu d'un combat, je ne le serais jamais. | ...hmm après réfléxion je pense que je comprend rien a ce que tu racontes. | Attend ? On se connait ?! }
 ->PlayerTurn
 
 =PlayerTurn
@@ -94,60 +95,90 @@ p_ {  Je suppose que tu sais pourquoi je suis la. Je me nomme Emile...Attend  qu
 +{bulletCLR!="empty"}[SHT]->Intro.shootMatrix
 
 =ATQ
-~SetMana(red)
-p_ emile attaque avec son katana frontalement, pas de temps a perdre !
-p_ si ce que tu veux c'est un vrai combat je peux te l'offrir ! #_fx_slash
-e_ Tu manques encore d'expérience ! je le sens dans tes coups et ta posture
-e_ Il faut que tu commence a visualiser ça comme...Hmmm..."une expérience challengeante non rémunéré"
-e_ l'ennemis vous repousse violament, vous infligeant des dégats
-~TakeDamage(1)
-p_ ...on peut etre rémunéré pour ça ? 
--> Intro.idle
+{
+  - n_ emile attaque frontalement, avec son katana
+    p_ pas de temps a perdre !
+    p_ si ce que tu veux c'est un vrai combat je peux te l'offrir ! #_fx_slash
+    e_ Tu manques encore d'expérience ! je le sens dans tes coups et ta posture
+    e_ Il faut que tu commence a visualiser ça comme...Hmmm..."une expérience challengeante non rémunéré"
+    n_ l'ennemis repousse violament emile, et lui inflige des dégats
+    ~SetMana(red)
+    ~TakeDamage(1)
+    -> Intro.idle`
+  
+  //ajouter un dialogue donnant au moins une information sur le passé de l'ennemis, ou ses problématique actuelle
+  
+  - e_ Il faut que tu commence a visualiser ça comme...Hmmm..."une expérience challengeante non rémunéré"
+    n_ Mais si c'est pas rémunéré, pourquoi je ferai ça? j'ai pas une tete a faire du bénévolat moi !
+    -> Intro.idle
+}
+
 
 =DEF
 {SetMana("blue")}
-p_ {vous vous preparez a recevoir un coup de katana... | vous essayez de vous mettre en dehors de sa ligne de mire...}
-e_ {j'ai toujours des options caché | Une cible encore plus simple à tirer qu'un pigeon urbain}
-//( perd une vie il tire une balle ) 
--> Intro.idle
+{
+  - p_ Emile se prepare a recevoir un coup de katana...
+    e_ j'ai toujours des options caché
+    -> Intro.idle
+
+  //ajouter un dialogue donnant au moins une information sur le passé de l'ennemis, ou ses problématique actuelle
+
+  - n_ Emile arrive a se mettre en dehors de la ligne de mire...
+    e_ Une cible encore plus simple qu'un pigeon urbain ! #_fx_gunshot
+    p_ tu fais beaucoup le malin pour quelqu'un qui a loupé son coups deux fois quand meme...
+    -> Intro.idle
+
+  - n_ retente de vous frapper a l'aide de son katana
+    p_ Lache moi t'es trop fan de moi ! je réfléchis a un truc ! #_fx_clash
+    -> Intro.idle
+}
+
 
 =TLK
 {
-- p_ je m'appelle emile, je ne me souviens plus de qui je suis.
-  p_ mais on ma filé une mission, et un role donc je me défile pas !
-  p_ Je suis venu avec la ferme intention de te botter le cul ( s'il le faut ).
-  e_ hahaha, tu es confiante, j'apprécie, c'est un caractère que l'on recherche en entreprise.
-  -> Intro.idle
 
-- p_ ...Il y a un truc dans ta manière de parler qui est étrange...
-  p_ mais enfaite tu es qui au juste? 
-  e_ Drole de manière de faire la conversation.
-  e_ Mais je me nomme X, grand entrepreneur local!
-  -> Intro.idle
+  - p_ écoute. Je suis venu avec la ferme intention de te botter le cul ( s'il le faut ).
+    p_ Je m'appelle Emile je ne sais pas qui je suis, mais je dois te déloger de la pour le bien de tous.
+    P_ Avant que se castagne plus que ça je préférai que l'on se connaisse. 
+    e_ ...J'apprécie ta confiance, c'est un caractère que l'on recherche en entreprise.
+    e_ je vois que tu es venu me déloger, donc tu te doutes que je me batterai pour défendre mon projet.
+    e_ Je ne sais pas qui vous etes toi et ta camarade...
+    e_ mais je suis ici CEO vous ne me renvoyerez pas une fois de plus!
+    p_ Une fois de plus...tiens...  
+    -> Intro.idle
 
-- p_ ...Si tu es la c'est que il y a plus.
-  p_ Ici, seule ceux en proie au doute peuvent venir ici...
-  p_ comment t'es tu retrouvé la?
-  e_ Gamine, Je reconnais tes exploits mais ne pousse pas ta chance trop loin.
-  -> Intro.idle
+  - p_ ...Il y a un truc dans ta manière de parler qui est étrange...
+    p_ Fin je pipe pas un mot a l'anglais moi, mais c'est bizarre tu parles comme un chef d'entreprises
+    e_ CEO veut dire chef d'entreprise...Tu as aussi oublié l'anglais en venant ici...?
+    p_ ouai bah fait pas le mariole non plus.
+    -> Intro.idle
 
-- p_ tu utilises un langages que tu ne maitrises pas.
-  p_ je le sens, je l'entend, tu es différent de ce que tu aspires etre.
-  p_ Emile ma donné le pouvoir de résoudre tout ses conflit a l'aide de cet armes.
-  p_ mais tant qu'il est encore temps on peut arriver a une autre conclusion.
-  e_ ...
-  -> Intro.idle
-
-- p_ Avant que on s'étripe dis moi au moins qui est-tu?
-  e_ vaste question ou commencer mon récit...
-  p_ après je demandais juste le strict minimum pour s'étriper.
-  p_ pas la full histoire non plus
-  e_ tout commence-
-  p_ non en vrai le minimum
-  e_ je suis le jeune patron d'une entreprise qui vends des des cours de développement personnelle...
-  e_ J'ai récemment fondé cet entreprises, je n'ai pas toujours fait ça...
-  p_ ...hm 
+  - p_ ...Comment tu t'es retrouvé...la? 
+    e_ vaste question ou commencer mon récit...
+    p_ après je demandais juste le strict minimum pour s'étriper.
+    p_ pas la full histoire non plus
+    e_ tout commence-
+    p_ non en vrai le minimum
+    e_ je suis le jeune patron d'une entreprise qui vends des des cours de développement personnelle...
+    e_ J'ai récemment fondé cet entreprises, je n'ai pas toujours fait ça...
+    p_ ...NON MAIS ÇA TU ME LA DÉJÀ DIT
   -> UniqueSequence1.idle
+
+  - p_ ...Si tu es la c'est que il y a plus.
+    p_ Ici, seule ceux en proie au doute peuvent venir ici...
+    p_ comment t'es tu retrouvé la? Je sens que t'essaye d'etre...autre chose, je serais pas dire quoi.
+    p_ Mais t'es pas le premier que j'affronte, je sais que tu cache un malaitre, vide ton sac
+    e_ ...Gamine, Je reconnais tes exploits mais ne pousse pas ta chance trop loin.
+    -> Intro.idle
+
+  - p_ ...Bon désolé pour tout a l'heure c'étais pas cool. 
+    p_ ...mais ça se voit que tu utilises un langages que tu ne maitrises pas!
+    p_ je le sens, je l'entend, tu es différent de ce que tu aspires etre.
+    p_ Emile ma donné le pouvoir de résoudre tout ses conflit a l'aide de cet armes.
+    p_ mais tant qu'il est encore temps on peut arriver a une conclusion sans conflit.
+    e_ ...
+    -> Intro.idle
+
 }
 -> Intro.idle
 
