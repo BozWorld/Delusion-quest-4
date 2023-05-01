@@ -37,6 +37,7 @@ p -> pour le player
 e -> pour l'enemy
 l -> elise
 c -> contextual interface
+n -> narrateur
 b -> pour both*
 
 *both c un cas particulier. D'abord tu précises b_ pour indiquer que les deux personnages vont s'exprimer en même temps.
@@ -61,16 +62,16 @@ c_ Vois choix le feront évoluer tout au long du combat, mais aussi provoqueront
 
 c_ Dans ce contexte particulier, vous possédé un étrange pouvoir.
 c_ faisons que exploiter les émotions de votre adversaire Charge des balles.
-c_ tirez ses balles jusqu'à provoquez une conclusion.
-c_ Vous avez 4 type d'action : l'attaque ( ATK ) , la défense ( DEF ), la conversation ( PRL )
+c_ tirez ses balles jusqu'à provoquez une conclusion ( TIR ) .
+c_ Vous avez 4 type d'action avec le tir : l'attaque ( ATK ) , la défense ( DEF ), la conversation ( PRL )
 c_ Chaque action auront une conséquence différentes dépends du contexte.
 c_ soyez attentive a ce que dit votre adversaire et ses réaction pour anticiper ses prochains coup.
 
 // Expliquez le principe de facette, et le faite de faire un mix de couleur
-c_ Dans une réalité distordu par votre adversaire, il est tiraillé entre 3 facette de lui meme.
-c_ dépends du contexte, les actions peuvent charger des balles, leurs couleurs représente ses facette.
-c_ la couleur rouge représente la facette samurai ( S ) 
-c_ la couleur bleu représente la facette cowboy ( C ) 
+c_ Dans une réalité distordu par votre adversaire, tiraillé entre 3 facette de lui meme.
+c_ dépendant du contexte, les actions peuvent charger des balles, leurs couleurs représente ses facette.
+c_ la couleur rouge représente la facette samurai ( S )  // sa fierté ?
+c_ la couleur bleu représente la facette cowboy ( C ) // Sa motivation ?
 c_ la couleur violet représente les deux facette en meme temps, son entreprenariat ( e )
 c_ les balles que vous tirez, le feront évolué en fonction de ses facette, 
 c_ changeant aussi ses coups et ses comportements.
@@ -83,8 +84,8 @@ l_ Quand ça arrive j'appelle "mon héro" pour s'en occuper...
 -> idle
 
 =idle
-e_{ IL EST TEMPS DE CONFRONTER NOS IDÉES SUR LE MARCHÉ DES IDÉES | C'est une entreprise dangereuse dans laquelle tu te lance, est tu prêt ? | Cette réunion commence a se faire longue}
-p_ {...hmm après réfléxion je pense voir ou tu vas avec ça | si je ne suis pas prêt en plein milieu d'un combat, je ne le serais jamais ! | Attend ? On se connait ?!}
+e_ { Ainsi quelqu'un est venu me défié dans mon open-space...Moi Algor, CEO d'une petite startup. |  C'est une entreprise dangereuse dans laquelle tu te lance, est tu prêt ? | IL EST TEMPS DE CONFRONTER NOS IDÉES SUR LE MARCHÉ DES IDÉES | Cette réunion commence a se faire longue }
+p_ {  Je suppose que tu sais pourquoi je suis la. Je me nomme Emile...Attend  quoi? | Si je ne suis pas prêt en plein milieu d'un combat, je ne le serais jamais. | ...hmm après réfléxion je pense que je comprend rien a ce que tu racontes. | Attend ? On se connait ?! }
 ->PlayerTurn
 
 =PlayerTurn
@@ -94,60 +95,90 @@ p_ {...hmm après réfléxion je pense voir ou tu vas avec ça | si je ne suis p
 +{bulletCLR!="empty"}[SHT]->Intro.shootMatrix
 
 =ATQ
-~SetMana(red)
-p_ emile attaque avec son katana frontalement, pas de temps a perdre !
-p_ si ce que tu veux c'est un vrai combat je peux te l'offrir ! #_fx_slash
-e_ Tu manques encore d'expérience ! je le sens dans tes coups et ta posture
-e_ Il faut que tu commence a visualiser ça comme...Hmmm..."une expérience challengeante non rémunéré"
-e_ l'ennemis vous repousse violament, vous infligeant des dégats
-~TakeDamage(1)
-p_ ...on peut etre rémunéré pour ça ? 
--> Intro.idle
+{
+  - n_ emile attaque frontalement, avec son katana
+    p_ pas de temps a perdre !
+    p_ si ce que tu veux c'est un vrai combat je peux te l'offrir ! #_fx_slash
+    e_ Tu manques encore d'expérience ! je le sens dans tes coups et ta posture
+    e_ Il faut que tu commence a visualiser ça comme...Hmmm..."une expérience challengeante non rémunéré"
+    n_ l'ennemis repousse violament emile, et lui inflige des dégats
+    ~SetMana(red)
+    ~TakeDamage(1)
+    -> Intro.idle`
+  
+  //ajouter un dialogue donnant au moins une information sur le passé de l'ennemis, ou ses problématique actuelle
+  
+  - e_ Il faut que tu commence a visualiser ça comme...Hmmm..."une expérience challengeante non rémunéré"
+    n_ Mais si c'est pas rémunéré, pourquoi je ferai ça? j'ai pas une tete a faire du bénévolat moi !
+    -> Intro.idle
+}
+
 
 =DEF
 {SetMana("blue")}
-p_ {vous vous preparez a recevoir un coup de katana... | vous essayez de vous mettre en dehors de sa ligne de mire...}
-e_ {j'ai toujours des options caché | Une cible encore plus simple à tirer qu'un pigeon urbain}
-//( perd une vie il tire une balle ) 
--> Intro.idle
+{
+  - p_ Emile se prepare a recevoir un coup de katana...
+    e_ j'ai toujours des options caché
+    -> Intro.idle
+
+  //ajouter un dialogue donnant au moins une information sur le passé de l'ennemis, ou ses problématique actuelle
+
+  - n_ Emile arrive a se mettre en dehors de la ligne de mire...
+    e_ Une cible encore plus simple qu'un pigeon urbain ! #_fx_gunshot
+    p_ tu fais beaucoup le malin pour quelqu'un qui a loupé son coups deux fois quand meme...
+    -> Intro.idle
+
+  - n_ retente de vous frapper a l'aide de son katana
+    p_ Lache moi t'es trop fan de moi ! je réfléchis a un truc ! #_fx_clash
+    -> Intro.idle
+}
+
 
 =TLK
 {
-- p_ je m'appelle emile, je ne me souviens plus de qui je suis.
-  p_ mais on ma filé une mission, et un role donc je me défile pas !
-  p_ Je suis venu avec la ferme intention de te botter le cul ( s'il le faut ).
-  e_ hahaha, tu es confiante, j'apprécie, c'est un caractère que l'on recherche en entreprise.
-  -> Intro.idle
 
-- p_ ...Il y a un truc dans ta manière de parler qui est étrange...
-  p_ mais enfaite tu es qui au juste? 
-  e_ Drole de manière de faire la conversation.
-  e_ Mais je me nomme X, grand entrepreneur local!
-  -> Intro.idle
+  - p_ écoute. Je suis venu avec la ferme intention de te botter le cul ( s'il le faut ).
+    p_ Je m'appelle Emile je ne sais pas qui je suis, mais je dois te déloger de la pour le bien de tous.
+    P_ Avant que se castagne plus que ça je préférai que l'on se connaisse. 
+    e_ ...J'apprécie ta confiance, c'est un caractère que l'on recherche en entreprise.
+    e_ je vois que tu es venu me déloger, donc tu te doutes que je me batterai pour défendre mon projet.
+    e_ Je ne sais pas qui vous etes toi et ta camarade...
+    e_ mais je suis ici CEO vous ne me renvoyerez pas une fois de plus!
+    p_ Une fois de plus...tiens...  
+    -> Intro.idle
 
-- p_ ...Si tu es la c'est que il y a plus.
-  p_ Ici, seule ceux en proie au doute peuvent venir ici...
-  p_ comment t'es tu retrouvé la?
-  e_ Gamine, Je reconnais tes exploits mais ne pousse pas ta chance trop loin.
-  -> Intro.idle
+  - p_ ...Il y a un truc dans ta manière de parler qui est étrange...
+    p_ Fin je pipe pas un mot a l'anglais moi, mais c'est bizarre tu parles comme un chef d'entreprises
+    e_ CEO veut dire chef d'entreprise...Tu as aussi oublié l'anglais en venant ici...?
+    p_ ouai bah fait pas le mariole non plus.
+    -> Intro.idle
 
-- p_ tu utilises un langages que tu ne maitrises pas.
-  p_ je le sens, je l'entend, tu es différent de ce que tu aspires etre.
-  p_ Emile ma donné le pouvoir de résoudre tout ses conflit a l'aide de cet armes.
-  p_ mais tant qu'il est encore temps on peut arriver a une autre conclusion.
-  e_ ...
-  -> Intro.idle
-
-- p_ Avant que on s'étripe dis moi au moins qui est-tu?
-  e_ vaste question ou commencer mon récit...
-  p_ après je demandais juste le strict minimum pour s'étriper.
-  p_ pas la full histoire non plus
-  e_ tout commence-
-  p_ non en vrai le minimum
-  e_ je suis le jeune patron d'une entreprise qui vends des des cours de développement personnelle...
-  e_ J'ai récemment fondé cet entreprises, je n'ai pas toujours fait ça...
-  p_ ...hm 
+  - p_ ...Comment tu t'es retrouvé...la? 
+    e_ vaste question ou commencer mon récit...
+    p_ après je demandais juste le strict minimum pour s'étriper.
+    p_ pas la full histoire non plus
+    e_ tout commence-
+    p_ non en vrai le minimum
+    e_ je suis le jeune patron d'une entreprise qui vends des des cours de développement personnelle...
+    e_ J'ai récemment fondé cet entreprises, je n'ai pas toujours fait ça...
+    p_ ...NON MAIS ÇA TU ME LA DÉJÀ DIT
   -> UniqueSequence1.idle
+
+  - p_ ...Si tu es la c'est que il y a plus.
+    p_ Ici, seule ceux en proie au doute peuvent venir ici...
+    p_ comment t'es tu retrouvé la? Je sens que t'essaye d'etre...autre chose, je serais pas dire quoi.
+    p_ Mais t'es pas le premier que j'affronte, je sais que tu cache un malaitre, vide ton sac
+    e_ ...Gamine, Je reconnais tes exploits mais ne pousse pas ta chance trop loin.
+    -> Intro.idle
+
+  - p_ ...Bon désolé pour tout a l'heure c'étais pas cool. 
+    p_ ...mais ça se voit que tu utilises un langages que tu ne maitrises pas!
+    p_ je le sens, je l'entend, tu es différent de ce que tu aspires etre.
+    p_ Emile ma donné le pouvoir de résoudre tout ses conflit a l'aide de cet armes.
+    p_ mais tant qu'il est encore temps on peut arriver a une conclusion sans conflit.
+    e_ ...
+    -> Intro.idle
+
 }
 -> Intro.idle
 
@@ -156,20 +187,22 @@ e_ {j'ai toujours des options caché | Une cible encore plus simple à tirer qu'
 -1:
     {
     -bulletCLR=="red":
-    e_ MONTRE MOI TOUT CE QUE TU AS DANS LE VENTRE
-    ->Intro.idle
+    p_ MONTRE MOI TOUT CE QUE TU AS DANS LE VENTRE ! #fx_shot
+    ->UneHistoireDEgo.idle
     -bulletCLR=="blue":
-    E_ emile tire un coups portant a l'ennemis, C'EST PAS DU JEU !
+    n_ emile tire un coups portant a l'ennemis, 
+    e_ C'EST PAS DU JEU !
     e_ Cet étrange balle...Tu triches comme eue...
     e_ Comme eue.. tu ne reconnais pas le travail et la volonté des individus...
-    e_ J'ai pas tricher ! Tu es capable de façonner un monde a ton image!
-    e_ encore heureux que j'ai le droit de te battre a ton propre jeu !
-    ->Intro.idle
+    p_ J'ai pas tricher ! Tu ne réalises meme pas l'étendu de ton impact ici!
+    p_ encore heureux que j'ai le droit de te battre a ton propre jeu !
+    ->CeluiQuiTireGagne.idle
     }
 }
 -> END
 
 ===UneHistoireDEgo===
+//https://www.youtube.com/watch?v=96YaOyAAXAg
 l_ chaque humain, trouve son ego dans les récit de l'imaginaire collectif
 l_ Chacun, y voit ce qu'il aspire a etre, une référence a envier.
 l_ Quand deux ego se rencontre, ils se confrontent.
@@ -180,25 +213,25 @@ l_ il se joue l'héritage de l'humanité.
 =idle 
 {
   - e_ Oh chère camarade de bataille, le ressens-tu ? Cette excitation du combat, cette chaleur ?
-    e_ {celle que on ne ressent qu'au début du sprint... | e_ celle qu'on apperçois que proche de la release}
-    p_ {j'ai désagréablement l'impression d'arrivé a comprendre ce que tu racontes. | J'ai compris c'est bon !}
+    e_ celle que on ne ressent qu'au début du sprint... 
+    p_ ...j'ai désagréablement l'impression d'arrivé a comprendre ce que tu racontes.
 
   - e_ celle qu'on apperçois que proche de la release
-    J'ai compris c'est bon !
+    p_ J'ai compris c'est bon !
 
-  - p_ Arrete avec ce langage en vrai.
-    p_ Moi cet bagarre je veux la faire j'y crois 
-    p_ Mais on met tout les deux nos coeur en jeux. Parle moi franchement laisse cet posture.
+  - e_ celle qu'on apperçois que proche de la release
+    p_ TU COMMENCES A ME RENDRE FOLLE !
+
+  - p_ Arrete avec ce langage.
+    p_ Moi cet bagarre je veux la faire j'y crois
+    p_ la castagne c'est mon truc. Moi je met mon ego en jeu, et j'attend que toi aussi.
     {SetMana("purple")}
 
   - e_ j'utilises pas tout ses mots pour rien.
-    e_ Moi en toute ses choses la j'y crois.
+    e_ Moi en toute ses choses la j'y crois. J'ai pas le choix.
     e_ L'agilité, le monde de demain, la fléxiblité, le remote tout ses choses la.
-    p_ ça se voit que tu viens pas de ce monde. montre moi ce qu'il y a réellement dans ton coeur.
+    p_ tu te ments a toi meme. Qui as heurté ? MONTRE MOI!
     {SetMana("purple")}
-
-
-
 }
 ->PlayerTurn
 ->DONE
@@ -213,21 +246,30 @@ l_ il se joue l'héritage de l'humanité.
 
 
 =ATQ
-{SetMana("red")}
-e_ X attaque Emil avec son katana, lui infligeant des dégâts.
-p_ surpris par le coups, Emil en profite malgré tout pour infliger un coups avec le flan de son armees
-e_ TU N'EST PAS ASSEZ PROACTIF POUR GAGNER CETTE BATAILLE, 
-e_ DANS CE COMBAT NOUS SOMMES LES UNIQUES PRODUCT OWNER DE NOTRE PROJET
-p_ attend, je suis conf-
-b_ mais enfaite t'inventes des mots$COMBIEN A TU MIT DE STORY POINT DANS CE COMBAT
-b_ si tu veux la jouer comme ça, moi aussi je peux rendre les coups"$Montre moi ta vrai détermination!
-~TakeDamage(1)
--> DeuxCoeursQuiSAiment.idle
+
+  - n_ X attaque Emil avec son katana, lui infligeant des dégâts.
+    n_ surpris par le coups, Emil en profite malgré tout pour infliger un coups avec le flan de son armees #fx_shot
+    e_ TU N'EST PAS ASSEZ PROACTIF POUR GAGNER CETTE BATAILLE, 
+    e_ DANS CE COMBAT NOUS SOMMES LES UNIQUES PRODUCT OWNER DE NOTRE PROJET
+    p_ attend, je suis conf-
+    b_ mais enfaite t'inventes des mots$COMBIEN A TU MIT DE STORY POINT DANS CE COMBAT!
+    b_ "yes i love america, do you about taxes, and fraude fiscale", tu vois moi aussi je peux inventer des mot"$MONTRE MOI TA VRAI DÉTERMINAT-Oh la t'es mesquin.
+    ~TakeDamage(1)
+    {SetMana("red")}
+
+  - n_ X attaque Emil avec son katana, lui infligeant des dégâts.
+    n_ surpris par le coups, Emil en profite malgré tout pour infliger un coups avec le flan de son armees #fx_shot
+    b_ SOIT NORMAL POUR UNE FOIS ET DIT DES TRUCS DE MEC QUI SE BATS$ CONCLUONS UNE DERNIERE FOIS CET USER STORY #fx_clash
+    ~TakeDamage(1)
+    {SetMana("red")}
+-> UneHistoireDEgo.idle
 
 =DEF
 {
   - e_ Tu peux repousser la deadline mais elle reviens toujours !
-    p_ je repousse aucun mot en anglais moi ! euh... je réfléchis juste un peu
+    p_ je repousse aucun mot en anglais moi ! euh... je réfléchis juste un peu.
+    P_ ...Attend deadline tu parles de genre quand il y a plus de réseau?
+    p_ Ah non ça a pas  de sens, fin bref euh je repousse rien du tout moi!
 
   - e_ Il est temps de la réunion !
     p_ Laisse moi réfléchir un peu plus longtemps !
@@ -235,7 +277,27 @@ b_ si tu veux la jouer comme ça, moi aussi je peux rendre les coups"$Montre moi
 -> Intro.idle
 
 =TLK
-e_ ...plus le temps de parler on approche de la release!
+  - p_ Mais c'est quoi ton truc avec l'anglais c'est quoi tout ce charabiat que tu racontes?
+    e_ C'est du langages moderne... C'est de l'agilité, c'est la clé de tout pour réusssir un projet
+    p_ Mais pourquoi tu me parles de statistique, genre a chaque fois tu dis un mot en anglais tu gagne 5% d'esquive?
+    e_ Non l'agilité c'est une méthodologie de travail qui permet de la fléxibilité...
+    p_ Mais pourquoi tu cherches a etre fléxible dans ton taffe...?
+
+  - e_ L'agilité me donne un pouvoir incommensurable, il me donne un sentiment...
+    e_ De mieux géré mon temps, de mieux travaillez sans jamais avoir l'impression de travaillez.
+    p_ ça a l'air chiant comme la pluie.
+    p_ respectueusement chiant comme la pluie... c'est comme ça que on dit?
+    p_ non fin ton truc la c'est bizarre, pourquoi je voudrais avoir l'impression de pas travaillez.
+    p_ ...alors que je travaille. C'est un coups a te faire exploiter par ton patron ça!
+
+  - e_ Gamine j'apprécie ta manière de pensez.
+    e_ et je suis bon joueur tiens ça : //tu reçois un shield
+    e_ Prend pas ce cadeau comme un signe de ta victoire, j'aime récompensé mes ennemis.
+    e_ Mais retiens bien ça je n'ai aucune forme de patron.
+
+  
+
+//si le joeuur talk 2 fois il a peut recevoir un bouclier de 1 point
 -> Intro.idle
 ->DONE
 
@@ -244,17 +306,23 @@ e_ ...plus le temps de parler on approche de la release!
 -2:
     {
     -bulletCLR=="red":
+    n_ emile tire un coups portant a l'ennemis,
     p_ Si Un vrai défis loyal que tu veux je vais te le donner.
-    e_ J'apprécie ta ténacité, c'est une qualité importante pour les noueaux métié
+    e_ hahaha gamine tu manqeus pas d'air, j'aime bien ça...
+    e_ te combattre...Est différent, j'ai jamais eue un adversaire comme toi
     p_ Arrete avec ton charabiat et montre moi ce que tu sais réellement faire.
     
     ->Intro.idle
-    -bulletCLR=="blue":
-    E_ emile tire un coups portant a l'ennemis, C'EST PAS DU JEU !
+    -bulletCLR=="violet":
+    n_ emile tire un coups portant a l'ennemis,
     e_ Cet étrange balle...Tu triches comme eue...
     e_ Comme eue.. tu ne reconnais pas le travail et la volonté des individus...
-    e_ J'ai pas tricher ! Tu es capable de façonner un monde a ton image!
-    e_ encore heureux que j'ai le droit de te battre a ton propre jeu !
+    p_ J'ai pas tricher ! Tu es capable de façonner un monde a ton image!
+    p_ écoute. La balle que je viens de tirer elle est unique.
+    p_ elle ne s'active que quand, ta posture s'éfrite.
+    p_ Elle est le reflet de ce qui as vraiment dans ton coeur, et ce que tu veux vraiment.
+    p_ Je respecte ton envie de ...changer ? réussir? je sais pas trop.
+    p_ laissons un peu le reste le combat rapidement. je m'appelle emile discutons un peu.
     ->Intro.idle
     }
 }
