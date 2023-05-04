@@ -277,27 +277,7 @@ l_ il se joue l'héritage de l'humanité.
 -> Intro.idle
 
 =TLK
-  - p_ Mais c'est quoi ton truc avec l'anglais c'est quoi tout ce charabiat que tu racontes?
-    e_ C'est du langages moderne... C'est de l'agilité, c'est la clé de tout pour réusssir un projet
-    p_ Mais pourquoi tu me parles de statistique, genre a chaque fois tu dis un mot en anglais tu gagne 5% d'esquive?
-    e_ Non l'agilité c'est une méthodologie de travail qui permet de la fléxibilité...
-    p_ Mais pourquoi tu cherches a etre fléxible dans ton taffe...?
-
-  - e_ L'agilité me donne un pouvoir incommensurable, il me donne un sentiment...
-    e_ De mieux géré mon temps, de mieux travaillez sans jamais avoir l'impression de travaillez.
-    p_ ça a l'air chiant comme la pluie.
-    p_ respectueusement chiant comme la pluie... c'est comme ça que on dit?
-    p_ non fin ton truc la c'est bizarre, pourquoi je voudrais avoir l'impression de pas travaillez.
-    p_ ...alors que je travaille. C'est un coups a te faire exploiter par ton patron ça!
-
-  - e_ Gamine j'apprécie ta manière de pensez.
-    e_ et je suis bon joueur tiens ça : //tu reçois un shield
-    e_ Prend pas ce cadeau comme un signe de ta victoire, j'aime récompensé mes ennemis.
-    e_ Mais retiens bien ça je n'ai aucune forme de patron.
-
-  
-
-//si le joeuur talk 2 fois il a peut recevoir un bouclier de 1 point
+e_ ...plus le temps de parler on approche de la release!
 -> Intro.idle
 ->DONE
 
@@ -313,16 +293,12 @@ l_ il se joue l'héritage de l'humanité.
     p_ Arrete avec ton charabiat et montre moi ce que tu sais réellement faire.
     
     ->Intro.idle
-    -bulletCLR=="violet":
-    n_ emile tire un coups portant a l'ennemis,
+    -bulletCLR=="blue":
+    E_ emile tire un coups portant a l'ennemis, C'EST PAS DU JEU !
     e_ Cet étrange balle...Tu triches comme eue...
     e_ Comme eue.. tu ne reconnais pas le travail et la volonté des individus...
-    p_ J'ai pas tricher ! Tu es capable de façonner un monde a ton image!
-    p_ écoute. La balle que je viens de tirer elle est unique.
-    p_ elle ne s'active que quand, ta posture s'éfrite.
-    p_ Elle est le reflet de ce qui as vraiment dans ton coeur, et ce que tu veux vraiment.
-    p_ Je respecte ton envie de ...changer ? réussir? je sais pas trop.
-    p_ laissons un peu le reste le combat rapidement. je m'appelle emile discutons un peu.
+    e_ J'ai pas tricher ! Tu es capable de façonner un monde a ton image!
+    e_ encore heureux que j'ai le droit de te battre a ton propre jeu !
     ->Intro.idle
     }
 }
@@ -427,7 +403,7 @@ p_ ... T'es une chance de me vaincre !
 ->DONE
 
 ===CeluiQuiTireGagne===
-l_Tout un futur depandant d'un simple instant
+l_Tout un futur vie dans un simple instant
 l_Une action capable d'en annuler une infinité
 l_Une action des plus simple qu'elle peut être fait par erreur
 l_mais un duel de volonté des plus érintant pour pouvoir l'accomplir
@@ -435,11 +411,20 @@ l_mais un duel de volonté des plus érintant pour pouvoir l'accomplir
 -> CeluiQuiTireGagne.idle
 
 ===idle===
-~CheckCondition(condition)
-e_je pense qu'il est temps pour un meeting en distenciel | il manque plus qu'un buisson sec traversant le lieu de notre duel et se sera parfait !
-p_c'est obligé? je suis pas tres doué avec la technologie | Ca va être complexe vu où on est, mais un journal ou une canette vide t'irait ?
+{
+  - e_ Je pense qu'il est temps pour toi d'apprendre a géré les choses a distance, kiddo...
+    p_ Oh non pas des surnoms bizarre, tout sauf ça...
+    ->CeluiQuiTireGagne.PlayerActions
+
+  - e_ Une falaise...un couchez de soleil...deux personne pret a tiret...est tu pret gamine...?
+    p_ J'ai jamais été aussi pret de ma vie, et meme genre avant j'étais pret mais pas aussi pret
+    ->CeluiQuiTireGagne.PlayerActions
+  - else:
+    ->DONE
+}
 // c'est obligé? je suis plus doué avec la castagne que la technologie
-->Titre.PlayerActions
+//je pense qu'il est temps pour un meeting en distenciel 
+->CeluiQuiTireGagne.PlayerActions
 
 =PlayerActions
 +[ATQ]->Titre.Atq
@@ -450,13 +435,16 @@ p_c'est obligé? je suis pas tres doué avec la technologie | Ca va être comple
 =ATQ
 {
   - e_Tu ne croie pas qu'il y a mieux a faire que d'agiter ton vulgaire sabre ici
-    p_Au moins, je suis sûr de pas me tromper dans son utilisation! enfin j'espere
+    p_Euh vulgaire toi meme ! tu sais meme pas que les Katana ça peut trancher des balles en deux!
+    n_ Emile se prend un coups juste après avoir dégainé, venant se loger directement dans une de ses jambes
+    ~TakeDamage(2)
+    //p_ Au moins, je suis sûr de pas me tromper dans son utili-....ok c'est pas ma meilleurs celle la
 
-  - e_Un duel de cowboy est une epreuve d'ingeniosité et de volonté, alors arrete de foncer comme un simple animal sauvage!
-    p_Qui sait, on est peut être entrain de créer une nouvelle variante?
-    e_J'en doute !
+  - e_ Un duel de cowboy est une epreuve d'ingeniosité et de volonté, alors arrete de foncer like a beast!
+    p_ Qui sait, on est peut être entrain de créer une nouvelle variante? ET ARRETE AVEC L'ANGLAIS
+    e_ J'apprécie ta détermination, dear friend, mais le monde est bien plus rude que tu le visualise.
+    ~TakeDamage(2)
 }
-~TakeDamage(-2 pv)
 ->Titre.Idle
 
 =DEF 
@@ -464,32 +452,58 @@ p_c'est obligé? je suis pas tres doué avec la technologie | Ca va être comple
 	-e_est ce tu sens la tension dans l'air mon ami, les questions qui t'aisaille pour savoir quoi faire ?
 	 p_Est ce que tu pourrais arreter de parler, j'essaye de me concentrer!
    e_Tu laisse passer trop d'information par ta simple voix!
-	
-	-e_Alors mon ami, arrive tu a t'adapter a cette manière de vivre? C'est tuer ou être tuer par ici!
-	 p_J'ai l'habitude de devoir m'adapter sur le vif, je te dirais de faire plus attention a toi.
-   e_ Bien. Ta voix respire la confiance, mais ce n'est pas encore le cas pour ton visage!
+   n_ X tire 2 coups sans prévenir, préparé emile esquive a grande vitesse les deux coups
+	 ~SetMana(1)
+   
+	-e_Alors mon ami, arrive tu a t'adapter a cette manière de vivre? it's killed or be leaved!
+	 p_ J'ai l'habitude de devoir m'adapter sur le vif moi ...mais c'est meme pas la bonne expression !
+   e_ Bien. Ta voix respire la confiance, mais ce n'est pas encore le cas of your face!
+   n_ X tire 2 coups sans prévenir, préparé emile esquive le premier coups mais reçois le second
+   ~SetMana(1)
 }
-~SetMana(+1 blue)
-~TakeDamage(-1 pv)
+~SetMana(1)
 ->Titre.Idle
 
 =TALK
 {
-	-p_Tu est sur que tu veux pas revenir au combat au sabre? Perso, je me sentirais plus alaisse!
-	 e_Pour juste s'entretuer en étant debout chacun devant l'autre, ca serait stupide.
-   p_Le cliché d'un duel de cowboy, c'est pas ça mais avec plus de distance entre les deux adversaires?
-   e_Je.. Je l'avais pas vu sous êtes angle, Ils ont peut être moins de difference que je le croyais?
+	- p_ Tu est sur que tu veux pas revenir au combat au sabre ?
+    p_ non car moi mon flingue je peux tirer quand je veux !
+    p_ et puis c'est pas un épisode de tex avery ! je tente de frapper tu tire, je frappe tu tire, c'est bon la
+    e_ Pour rappel gamine tu es la première a avoir tiré 
+    p_ Ouai mais moi je suis pas capable de matérialiser un foutu monde autour de moi!
+    p_ non et puis tu sais quoi ? espèce de lache !
+    e_ ...ta stratégie est d'essayer de m'enerver?
+
+  - P_ bouuuu! espèce de pleutre ! et meme que je suis sur que tu te chie encore dessus !
+    e_ Bon la ça devien puéril.
+    P_ cot, cot, cot la poule mouillé!
+    e_ C'est bon j'ai compris arrete! 
+    p_ Bouuuuh le looser! Tu vas faire quoi? appellez elise pour lui dire que je me moque de toi?
+    p_ GAMINE FAIT GAFFE A CE QUE TU DIS JE SUIS UN ENTREPENEUR SÉRIEUX!
+    {SetMana("red")}
+  //   e_ C'est bon j'ai ce qu'il me fallait, désolé pour ça des fois faut etre créative, hé hé hé.
+
+  //   e_ et puis non mais tu prenais grave la tete avec ton 
+  //   p_ Moi je suis pour une bagarre a l'ancienne, pan, pan, boom et ptet on tire pour conclure!
+
+	//  e_Pour juste s'entretuer en étant debout chacun devant l'autre, ca serait stupide.
+  //  p_Le cliché d'un duel de cowboy, c'est pas ça mais avec plus de distance entre les deux adversaires?
+  //  e_Je.. Je l'avais pas vu sous êtes angle, Ils ont peut être moins de difference que je le croyais?
 }
 ~SetMana(+1 red)
 ->Titre.Idle
 
 =ShotMatrix
 { bulletPWR :
-	-1: {bulletCLR:
-		-BLUE: ->cowboy 3
+	-2: 
+    {bulletCLR:
+		  - bulletCLR=="blue":
+        b_ X ALLONS AU CLIMAX DE CE COMBAT$EMILE MONTRE MOI TOUTE TON INGENIOTÉ, MONTRE MOI TON ESPRIT D'ENTREPRENEUSE
+       -> cowboy 3
 	}
 		
 	-2:{bulletCLR:
+
     e_Si les duels de samurai et cowboy peuvent être aussi similaire, est ce que d'autres aspect le sont aussi?
     e_ AAHHH, tu me fait douté a cause de ce que tu as dit !
     p_C'est juste un détail, tu sais ?
@@ -497,6 +511,31 @@ p_c'est obligé? je suis pas tres doué avec la technologie | Ca va être comple
     ->Intro.idle
 		-VIOLET: ->LaRécompenseDesPerdants
 	}
+
+  =shootMatrix
+{bulletPWR:
+-2:
+    {
+    -bulletCLR=="red":
+    b_ FINISSONS CE COMBAT$ PREPARE TOI A UNE RUPTURE DE L'ILLUSION
+    ->CommentMeurtUnHommeDroit.idle
+
+    - bulletCLR=="violet":
+    e_ Brouillers les pistes t'amenera a rien.
+    e_ Je vois que tu essayes de me titiler de me faire perdre la raison.
+    e_ Mais ça n'arrivera pas, je crois en mes motivations.
+    e_ prèpare toi a tirer tes dernières balles 
+    ->LaRecompenseDesPerdants.idle
+    }
+-1:
+    {
+    -bulletCLR=="blue":
+    e_ Tu vois pas plus que les autres ! Avec vos combines
+    e_ Je suis un honnete travailleurs moi, j'ai fait ça toute ma vie.
+    e_ Mais pourrez jamais comprendre ! JE PEUX JOUER AU MEME JEU QUE VOUS !
+    ->LeGoutDeLaVictoire.idle
+    }
+}
 }
 
 
