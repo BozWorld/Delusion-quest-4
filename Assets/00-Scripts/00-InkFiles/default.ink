@@ -277,31 +277,7 @@ l_ il se joue l'héritage de l'humanité.
 -> Intro.idle
 
 =TLK
-{
-
-
-  - p_ Mais c'est quoi ton truc avec l'anglais c'est quoi tout ce charabiat que tu racontes?
-    e_ C'est du langages moderne... C'est de l'agilité, c'est la clé de tout pour réusssir un projet
-    p_ Mais pourquoi tu me parles de statistique, genre a chaque fois tu dis un mot en anglais tu gagne 5% d'esquive?
-    e_ Non l'agilité c'est une méthodologie de travail qui permet de la fléxibilité...
-    p_ Mais pourquoi tu cherches a etre fléxible dans ton taffe...?
-    -> Intro.idle
-
-  - e_ L'agilité me donne un pouvoir incommensurable, il me donne un sentiment...
-    e_ De mieux géré mon temps, de mieux travaillez sans jamais avoir l'impression de travaillez.
-    p_ ça a l'air chiant comme la pluie.
-    p_ respectueusement chiant comme la pluie... c'est comme ça que on dit?
-    p_ non fin ton truc la c'est bizarre, pourquoi je voudrais avoir l'impression de pas travaillez.
-    p_ ...alors que je travaille. C'est un coups a te faire exploiter par ton patron ça!
-    -> Intro.idle
-
-  - e_ Gamine j'apprécie ta manière de pensez.
-    e_ et je suis bon joueur tiens ça : //tu reçois un shield
-    e_ Prend pas ce cadeau comme un signe de ta victoire, j'aime récompensé mes ennemis.
-    e_ Mais retiens bien ça je n'ai aucune forme de patron.
-    -> Intro.idle
-}
-//si le joeuur talk 2 fois il a peut recevoir un bouclier de 1 point
+e_ ...plus le temps de parler on approche de la release!
 -> Intro.idle
 ->DONE
 
@@ -315,18 +291,15 @@ l_ il se joue l'héritage de l'humanité.
     e_ hahaha gamine tu manqeus pas d'air, j'aime bien ça...
     e_ te combattre...Est différent, j'ai jamais eue un adversaire comme toi
     p_ Arrete avec ton charabiat et montre moi ce que tu sais réellement faire.
-    ->DeuxCoeurQuiSAiment.idle
-    -bulletCLR=="violet":
-    n_ emile tire un coups portant a l'ennemis,
+    
+    ->Intro.idle
+    -bulletCLR=="blue":
+    E_ emile tire un coups portant a l'ennemis, C'EST PAS DU JEU !
     e_ Cet étrange balle...Tu triches comme eue...
     e_ Comme eue.. tu ne reconnais pas le travail et la volonté des individus...
-    p_ J'ai pas tricher ! Tu es capable de façonner un monde a ton image!
-    p_ écoute. La balle que je viens de tirer elle est unique.
-    p_ elle ne s'active que quand, ta posture s'éfrite.
-    p_ Elle est le reflet de ce qui as vraiment dans ton coeur, et ce que tu veux vraiment.
-    p_ Je respecte ton envie de ...changer ? réussir? je sais pas trop.
-    p_ laissons un peu le reste le combat rapidement. je m'appelle emile discutons un peu.
-    ->UnePitoyableFierte.idle
+    e_ J'ai pas tricher ! Tu es capable de façonner un monde a ton image!
+    e_ encore heureux que j'ai le droit de te battre a ton propre jeu !
+    ->Intro.idle
     }
 }
 ->DONE
@@ -526,15 +499,21 @@ l_mais un duel de volonté des plus érintant pour pouvoir l'accomplir
     {bulletCLR:
 		  - bulletCLR=="blue":
         b_ X ALLONS AU CLIMAX DE CE COMBAT$EMILE MONTRE MOI TOUTE TON INGENIOTÉ, MONTRE MOI TON ESPRIT D'ENTREPRENEUSE
-       -> cowboy 3
+       -> cowboy 2
 	}
 		
 	-2:{bulletCLR:
 
-    e_Si les duels de samurai et cowboy peuvent être aussi similaire, est ce que d'autres aspect le sont aussi?
-    e_ AAHHH, tu me fait douté a cause de ce que tu as dit !
-    p_C'est juste un détail, tu sais ?
-    e_Les détails sont importants, que ce soit lors des paiements de taxe ou dans l'art des duels!
+    //  e_Si les duels de samurai et cowboy peuvent être aussi similaire, est ce que d'autres aspect le sont aussi?
+    //  e_ AAHHH, tu me fait douté a cause de ce que tu as dit !
+    //  p_C'est juste un détail, tu sais ?
+    //  e_Les détails sont importants, que ce soit lors des paiements de taxe ou dans l'art des duels!
+        
+        e_Qu'est ce que tu crois faire a venir ici, me forcer a un choix et se plaindre a moi du resultat!
+        e_Tu me met toi même dans une situation dont je ne produirait pas quelque chose de satisfaisant...
+        e_Et tu utilisa pour diminuer mon travail et ma valeur ! Vous etes tous les mêmes !
+        e_Mais cette fois, j'ai de quoi riposter! Je vais te monter ma valeur et te faire regretter tes actions !
+
     ->Intro.idle
 		-VIOLET: ->LaRécompenseDesPerdants
 	}
