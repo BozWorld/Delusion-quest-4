@@ -499,15 +499,21 @@ l_mais un duel de volonté des plus érintant pour pouvoir l'accomplir
     {bulletCLR:
 		  - bulletCLR=="blue":
         b_ X ALLONS AU CLIMAX DE CE COMBAT$EMILE MONTRE MOI TOUTE TON INGENIOTÉ, MONTRE MOI TON ESPRIT D'ENTREPRENEUSE
-       -> cowboy 3
+       -> cowboy 2
 	}
 		
 	-2:{bulletCLR:
 
-    e_Si les duels de samurai et cowboy peuvent être aussi similaire, est ce que d'autres aspect le sont aussi?
-    e_ AAHHH, tu me fait douté a cause de ce que tu as dit !
-    p_C'est juste un détail, tu sais ?
-    e_Les détails sont importants, que ce soit lors des paiements de taxe ou dans l'art des duels!
+    //  e_Si les duels de samurai et cowboy peuvent être aussi similaire, est ce que d'autres aspect le sont aussi?
+    //  e_ AAHHH, tu me fait douté a cause de ce que tu as dit !
+    //  p_C'est juste un détail, tu sais ?
+    //  e_Les détails sont importants, que ce soit lors des paiements de taxe ou dans l'art des duels!
+        
+        e_Qu'est ce que tu crois faire a venir ici, me forcer a un choix et se plaindre a moi du resultat!
+        e_Tu me met toi même dans une situation dont je ne produirait pas quelque chose de satisfaisant...
+        e_Et tu utilisa pour diminuer mon travail et ma valeur ! Vous etes tous les mêmes !
+        e_Mais cette fois, j'ai de quoi riposter! Je vais te monter ma valeur et te faire regretter tes actions !
+
     ->Intro.idle
 		-VIOLET: ->LaRécompenseDesPerdants
 	}
