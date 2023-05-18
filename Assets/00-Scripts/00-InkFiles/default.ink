@@ -116,6 +116,16 @@ p_ ...hmm après réfléxion je pense voir ou tu vas avec ça
     -> Intro.idle
 }
 
+<<<<<<< HEAD
+=======
+{SetMana("red")}
+p_ emile attaque directement avec son katana
+e_ oh j'apprécie ta témérité mais ça ne sera pas suffisant
+e_ tu manques de motivation pour gagner cet bataille'
+e_ il faut que tu visualise ce combats comme "une expériences challengeante non rémunéré"
+p_ ...c'est possible de se faire rémunéré?
+-> Intro.idle
+>>>>>>> c4a0fe0 ({ add attaque + def + intro new sequences })
 
 =DEF
 {SetMana("blue")}
@@ -138,6 +148,7 @@ p_ ...hmm après réfléxion je pense voir ou tu vas avec ça
 
 
 =TLK
+<<<<<<< HEAD
 {
 
   - p_ écoute. Je suis venu avec la ferme intention de te botter le cul ( s'il le faut ).
@@ -183,6 +194,16 @@ p_ ...hmm après réfléxion je pense voir ou tu vas avec ça
     -> Intro.idle
 
 }
+=======
+p_ Avant que on s'étripe dis moi au moins qui est-tu?
+e_ vaste question ou commencer mon récit...
+p_ après je demandais juste le strict minimum pour s'étriper.
+p_ pas la full histoire non plus
+e_ tout commence-
+p_ non en vrai le minimum
+e_ je suis le jeune patron d'une entreprise qui vends des des cours de développement personnel
+p_ ah
+>>>>>>> c4a0fe0 ({ add attaque + def + intro new sequences })
 -> Intro.idle
 
 =shootMatrix
@@ -205,6 +226,7 @@ p_ ...hmm après réfléxion je pense voir ou tu vas avec ça
 -> END
 
 ===UneHistoireDEgo===
+<<<<<<< HEAD
 //https://www.youtube.com/watch?v=96YaOyAAXAg
 l_ chaque humain, trouve son ego dans les récit de l'imaginaire collectif
 l_ Chacun, y voit ce qu'il aspire a etre, une référence a envier.
@@ -659,6 +681,8 @@ e_...
 }
 
 ===UneHistoireDEgo===
+=======
+>>>>>>> c4a0fe0 ({ add attaque + def + intro new sequences })
 Chaque humain est guidé par son propre ego
 et dans cela il y a quelque chose de magnifique
 qund deux ego se rencontrent, ils se confrontent
@@ -679,6 +703,40 @@ p_ Ah, ouais, je crois que je le ressens... ou un truc du genre ouai.
 +[DEF]->UneHistoireDEgo.DEF
 +[TLK]->UneHistoireDEgo.TLK
 +{bulletCLR!="empty"}[SHT]->UneHistoireDEgo.shootMatrix
+<<<<<<< HEAD
+=======
+
+
+=ATQ
+{SetMana("red")}
+e_ X attaque Emil avec son katana, lui infligeant des dégâts.
+p_ surpris par le coups, Emil en profite malgré tout pour infliger un coups avec le flan de son arme
+~HP-= 1
+e_ TU N'EST PAS ASSEZ PROACTIF POUR GAGNER CETTE BATAILLE, 
+e_ ÇA FAIT DES MOIS QUE JE FAIS DES MELEE QUOTIDIENNE SUR MON PROJET
+p_ hein c'est qu-
+e_ DANS CE COMBAT NOUS SOMMES LES UNIQUES PRODUCT OWNER DE NOTRE PROJET
+p_ attend, je suis conf-
+b_ mais enfaite t'inventes des mots$COMBIEN A TU MIT DE STORY POINT DANS CE COMBAT
+e_ X réattaque juste derrrière le coups précédent infligeant une seconde salve de dégats
+~HP-= 1
+p_ va falloir que je sois plus vigilant contre lui..
+-> Intro.idle
+
+=DEF
+e_ X attaque Emil avec son katana, sans succès, emil c'étais mit en posture de défense
+e_ c'est bas de ta part... j'en attendais plus...
+e_ je vais surement devoir revoir ta vélocité au seins du projet
+p_ oui velocité, sprint, tout ça tout ça, j'ai compris.
+-> Intro.idle
+
+=TLK
+p_ ...Il y a quelque chose qui as changé tu t'exprimes plus de la meme manière
+e_ 
+-> Intro.idle
+===CeluiQuiTireGagne
+->END
+>>>>>>> c4a0fe0 ({ add attaque + def + intro new sequences })
 
 
 =ATQ
