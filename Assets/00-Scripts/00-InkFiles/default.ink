@@ -329,8 +329,8 @@ l_ ce battre c'est donnée son coeur
     e_ Désolé je suis un peu ému.
 
   - e_ ...J'apprécie que tu prenne toute cet histoire au sérieux gamine. 
-    p_ Ton charabiat en anglais abominable, n'enleve rien a ta volonté.
-    p_ Je n'avais pas d'autre choix que t'offrir un vrai challenge.
+    p_ Ton charabiat a beau etre abominable, je respecte ta volonté.
+    p_ Je n'avais pas d'autre choix que de faire de mon mieux pour t'offrir un vrai challenge.
 
   - p_ Combat moi avec toute la rage que tu possède.
     p_ Montre moi toute la férocité de ton entreprise.
@@ -357,7 +357,8 @@ l_ ce battre c'est donnée son coeur
     {SetMana("red")}
 
   - e_ Donne ton coeur une dernière fois au combat !
-    p_ Je comptais donnée mon coeur au combat, avant que tu me dises ton truc la ! 
+    p_ Je comptais déjà donné mon coeur au combat -avant que tu le dises nottament- 
+    p_ a moins que tu fasse réference a mon vraie et dans ce cas, j'en ai besoin, désolé.
     ~TakeDamage(1)
     {SetMana("red")}
 }
@@ -367,22 +368,30 @@ l_ ce battre c'est donnée son coeur
 =DEF
 {
   - p_ Bah alors grand père on a du mal a suivre la cadence!
+    e_ ... Mon age a rien avoir avec tout ça... ce n'étais déjà pas une bonne justification a l'époque!
+    p_... euh je vois pas de quoi tu parles...c'est un peu génant...
     {SetMana("blue")}
 
-  - e_ C'est a cause des gens comme toi que j'ai tout perdu !
-    p_ Je suis pas responsable de tes échecs!
+  - e_ Arrete d'esquiver.. je m'adapte mal a cet manière de se battre !
+    e_ Ses nouvelles...technologie...outils. avec du temps j'arriverai a m'adapter! 
+    e_ fléxibilité...dynamisme...l'adaptation...ON  NE ME LAISSE JAMAIS LE TEMPS! 
+    p_ Tu es entrain de péter une artère grand père ! j'ai rien avoir avec tout ça !
+    e_ vous etes tous pareil...toi...ou ceux qui m'ont virer vous valez pas mieux...
     {SetMana("blue")}
-
     
 }
 -> Intro.idle
 
 =TLK
-e_ je vois que t'es épuisé...prend ça.
-e_ Je ne veux pas que tu blame ton échec sur des injustices.
-p_ ...J'aurais effectivement fait ça, mais crois pas que ...
-p_ ... T'es une chance de me vaincre ! 
-{SetMana("blue")}
+-  e_ je vois que t'es épuisé...prend ça.
+  n_ X lui envoie une potion de soin..
+  e_ Je ne veux pas que tu blame ton échec sur des injustices.
+  p_ ...J'aurais probablement fait ça, mais crois pas que ...
+  p_ ... T'es une chance de me vaincre ! 
+
+- p_ ...euh ta potion la elle a bon gout..il y'aurai moyen de-
+  e_ Gamine pousse pas le bouchon trop loin.
+  p_ ouai ta raison, mais bon faut toujours tenter.
 
 -> Intro.idle
 ->DONE
@@ -500,7 +509,6 @@ l_mais un duel de volonté des plus érintant pour pouvoir l'accomplir
   //  p_Le cliché d'un duel de cowboy, c'est pas ça mais avec plus de distance entre les deux adversaires?
   //  e_Je.. Je l'avais pas vu sous êtes angle, Ils ont peut être moins de difference que je le croyais?
 }
-~SetMana(+1 red)
 ->Titre.Idle
 
 =ShotMatrix
@@ -662,104 +670,6 @@ e_...
       p_ ...Je lis pas vraiment de manga, désolé je suis un peu malaisé la je sais pas trop quoi te répondre
       e_ Merci... je sais comment faire... je sais vers ou mener ma nouvelle carrière, mon entreprenariat.
       p_ Franchement retournons a la bagarre, ce que tu racontes me donne proprement mal au crane.
-	}
-}
-
-===UneHistoireDEgo===
-Chaque humain est guidé par son propre ego
-et dans cela il y a quelque chose de magnifique
-qund deux ego se rencontrent, ils se confrontent
-dans cet étrange fatalité, née les coeur qui résonnent
-
-=idle
-e_ Oh chère camarade de bataille, le ressens-tu ?
-e_ Cette excitation du combat, cette chaleur ?
-e_ celle que on ne ressent qu'au début du sprint...
-e_ celle qu'on apperçois que proche de la release
-p_ Désolé, je ne parle pas anglais. Ça veut dire quoi "heat"...?
-b_ "Heat", c'est la passion, l'excitation, l'adrénaline.
-p_ Ah, ouais, je crois que je le ressens... ou un truc du genre ouai.
-->END
-
-=PlayerTurn
-+[ATQ]->UneHistoireDEgo.ATQ
-+[DEF]->UneHistoireDEgo.DEF
-+[TLK]->UneHistoireDEgo.TLK
-+{bulletCLR!="empty"}[SHT]->UneHistoireDEgo.shootMatrix
-
-
-=ATQ
-{SetMana("red")}
-e_ X attaque Emil avec son katana, lui infligeant des dégâts.
-p_ surpris par le coups, Emil en profite malgré tout pour infliger un coups avec le flan de son arme
-~HP-= 1
-e_ TU N'EST PAS ASSEZ PROACTIF POUR GAGNER CETTE BATAILLE, 
-e_ ÇA FAIT DES MOIS QUE JE FAIS DES MELEE QUOTIDIENNE SUR MON PROJET
-p_ hein c'est qu-
-e_ DANS CE COMBAT NOUS SOMMES LES UNIQUES PRODUCT OWNER DE NOTRE PROJET
-p_ attend, je suis conf-
-b_ mais enfaite t'inventes des mots$COMBIEN A TU MIT DE STORY POINT DANS CE COMBAT
-e_ X réattaque juste derrrière le coups précédent infligeant une seconde salve de dégats
-~HP-= 1
-p_ va falloir que je sois plus vigilant contre lui..
--> Intro.idle
-
-=DEF
-e_ X attaque Emil avec son katana, sans succès, emil c'étais mit en posture de défense
-e_ c'est bas de ta part... j'en attendais plus...
-e_ je vais surement devoir revoir ta vélocité au seins du projet
-p_ oui velocité, sprint, tout ça tout ça, j'ai compris.
--> Intro.idle
-
-=TLK
-p_ ...Il y a quelque chose qui as changé tu t'exprimes plus de la meme manière
-e_ 
--> Intro.idle
-===CeluiQuiTireGagne
-->END
-
-
-=ATQ
-{SetMana("red")}
-e_ X attaque Emil avec son katana, lui infligeant des dégâts.
-p_ surpris par le coups, Emil en profite malgré tout pour infliger un coups avec le flan de son arme
-~HP-= 1
-e_ TU N'EST PAS ASSEZ PROACTIF POUR GAGNER CETTE BATAILLE, 
-e_ ÇA FAIT DES MOIS QUE JE FAIS DES MELEE QUOTIDIENNE SUR MON PROJET
-p_ hein c'est qu-
-e_ DANS CE COMBAT NOUS SOMMES LES UNIQUES PRODUCT OWNER DE NOTRE PROJET
-p_ attend, je suis conf-
-b_ mais enfaite t'inventes des mots$COMBIEN A TU MIT DE STORY POINT DANS CE COMBAT
-e_ X réattaque juste derrrière le coups précédent infligeant une seconde salve de dégats
-~HP-= 1
-p_ va falloir que je sois plus vigilant contre lui..
--> Intro.idle
-
-=DEF
-e_ X attaque Emil avec son katana, sans succès, emil c'étais mit en posture de défense
-e_ c'est bas de ta part... j'en attendais plus...
-e_ je vais surement devoir revoir ta vélocité au seins du projet
-p_ oui velocité, sprint, tout ça tout ça, j'ai compris.
--> Intro.idle
-
-=TLK
-p_ ...Il y a quelque chose qui as changé tu t'exprimes plus de la meme manière
-e_ 
--> Intro.idle
-=ShotMatrix
-{ bulletPWR :
-	-2: 
-    {bulletCLR:
-		  - bulletCLR=="blue":
-        b_ X ALLONS AU CLIMAX DE CE COMBAT$EMILE MONTRE MOI TOUTE TON INGENIOTÉ, MONTRE MOI TON ESPRIT D'ENTREPRENEUSE
-       -> LaSolitudeCommeModeDeVie.idle
-
-      - bulletCLR=="violet":
-        e_ Qu'est ce que tu crois faire a venir ici, me forcer a un choix et se plaindre du resultat!
-        e_ Tu me met dans une situation dont je ne produirait pas quelque chose de satisfaisant...
-        e_ Et tu utilisa pour diminuer mon travail et ma valeur ! Vous etes tous les mêmes !
-        e_ Mais cette fois, j'ai de quoi riposter! Je vais te monter ma valeur et te faire regretter tes actions !
-        ->LaRécompenseDesPerdants.idle
 	}
 }
 // //reset Mana
