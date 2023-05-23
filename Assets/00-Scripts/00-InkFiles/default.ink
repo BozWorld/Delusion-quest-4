@@ -116,8 +116,6 @@ p_ ...hmm après réfléxion je pense voir ou tu vas avec ça
     -> Intro.idle
 }
 
-<<<<<<< HEAD
-=======
 {SetMana("red")}
 p_ emile attaque directement avec son katana
 e_ oh j'apprécie ta témérité mais ça ne sera pas suffisant
@@ -125,7 +123,6 @@ e_ tu manques de motivation pour gagner cet bataille'
 e_ il faut que tu visualise ce combats comme "une expériences challengeante non rémunéré"
 p_ ...c'est possible de se faire rémunéré?
 -> Intro.idle
->>>>>>> c4a0fe0 ({ add attaque + def + intro new sequences })
 
 =DEF
 {SetMana("blue")}
@@ -148,7 +145,6 @@ p_ ...c'est possible de se faire rémunéré?
 
 
 =TLK
-<<<<<<< HEAD
 {
 
   - p_ écoute. Je suis venu avec la ferme intention de te botter le cul ( s'il le faut ).
@@ -194,16 +190,6 @@ p_ ...c'est possible de se faire rémunéré?
     -> Intro.idle
 
 }
-=======
-p_ Avant que on s'étripe dis moi au moins qui est-tu?
-e_ vaste question ou commencer mon récit...
-p_ après je demandais juste le strict minimum pour s'étriper.
-p_ pas la full histoire non plus
-e_ tout commence-
-p_ non en vrai le minimum
-e_ je suis le jeune patron d'une entreprise qui vends des des cours de développement personnel
-p_ ah
->>>>>>> c4a0fe0 ({ add attaque + def + intro new sequences })
 -> Intro.idle
 
 =shootMatrix
@@ -226,7 +212,6 @@ p_ ah
 -> END
 
 ===UneHistoireDEgo===
-<<<<<<< HEAD
 //https://www.youtube.com/watch?v=96YaOyAAXAg
 l_ chaque humain, trouve son ego dans les récit de l'imaginaire collectif
 l_ Chacun, y voit ce qu'il aspire a etre, une référence a envier.
@@ -681,8 +666,6 @@ e_...
 }
 
 ===UneHistoireDEgo===
-=======
->>>>>>> c4a0fe0 ({ add attaque + def + intro new sequences })
 Chaque humain est guidé par son propre ego
 et dans cela il y a quelque chose de magnifique
 qund deux ego se rencontrent, ils se confrontent
@@ -703,8 +686,6 @@ p_ Ah, ouais, je crois que je le ressens... ou un truc du genre ouai.
 +[DEF]->UneHistoireDEgo.DEF
 +[TLK]->UneHistoireDEgo.TLK
 +{bulletCLR!="empty"}[SHT]->UneHistoireDEgo.shootMatrix
-<<<<<<< HEAD
-=======
 
 
 =ATQ
@@ -736,7 +717,6 @@ e_
 -> Intro.idle
 ===CeluiQuiTireGagne
 ->END
->>>>>>> c4a0fe0 ({ add attaque + def + intro new sequences })
 
 
 =ATQ
