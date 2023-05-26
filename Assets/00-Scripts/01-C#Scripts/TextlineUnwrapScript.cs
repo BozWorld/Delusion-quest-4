@@ -34,7 +34,7 @@ public class TextlineUnwrapScript : MonoBehaviour
 
     IEnumerator Unwrapping()
     {
-        InkManager.singleton.canAdvance = false;
+        OtherManager.singleton.canAdvance = false;
 
         yield return new WaitForSeconds(_delay);
 
@@ -61,6 +61,6 @@ public class TextlineUnwrapScript : MonoBehaviour
             _tmpText.text = _tmpText.text.Substring(0, _tmpText.text.Length - _leadingChar.Length);
         }
 
-        InkManager.singleton.canAdvance = true;
+        OtherManager.singleton.canAdvance = true;
     }
 }

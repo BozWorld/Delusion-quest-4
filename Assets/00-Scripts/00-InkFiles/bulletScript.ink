@@ -1,5 +1,10 @@
+EXTERNAL DelusionShift(mood)
+VAR playerHP = 4
 VAR bulletPWR = 0
 VAR bulletCLR = "empty"
+
+===function TakeDamage
+~playerHP--
 
 ===function SetMana(CLR)
 {SetPWR()}
