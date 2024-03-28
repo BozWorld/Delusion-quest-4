@@ -9,6 +9,7 @@ public class OtherManager : MonoBehaviour
 {
     public static OtherManager singleton;
     public Camera main;
+    public Transform camPivot;
     CameraBreathTween breath;
 
     public Story story;
@@ -52,6 +53,9 @@ public class OtherManager : MonoBehaviour
         {
             _actionPanel.DischargeBullet();
             _foreground.DisplayDelusionShift();
+            LeanTween.scaleY(_playerBox, 0, .3f);
+            LeanTween.scaleY(_enemyBox, 0, .3f);
+            LeanTween.rotateY(camPivot.gameObject, -10, 2).setLoopPingPong(1).setEaseInQuart();
         });
 
        
@@ -84,6 +88,10 @@ public class OtherManager : MonoBehaviour
             if (story.currentText.Contains("_"))
             {
                 DisplayDialogue(story.currentText);
+            }
+            else if (story.currentText.Contains("+"))
+            {
+                DisplayContext(story.currentText);
             }
             else
             {
@@ -147,6 +155,12 @@ public class OtherManager : MonoBehaviour
         _foreground.ToggleForeground(false);
         LeanTween.rotateY(main.gameObject, 0, 0.3f);
         _foregroundTxt.UnwrapTextline(txt);
+    }
+
+    void DisplayContext(string txt)
+    {
+        string[] splits = story.currentText.Split('+');
+        _actionPanel.UnwrapContext(splits[0], splits[1]);
     }
 
     void DisplayChoices()

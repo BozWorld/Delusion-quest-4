@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://da8un5qhfigr3"
+path="res://.godot/imported/FOTNewRodin Pro M.otf-063cb588a5b1c0804d7779ac604d475b.fontdata"
+
+[deps]
+
+source_file="res://DelusionQUETE/delusionRepo/Sans titre/Delusion-quest-4/DQ4/Sans titre/Assets/01-FontAssets/newRodin/FOTNewRodin Pro M.otf"
+dest_files=["res://.godot/imported/FOTNewRodin Pro M.otf-063cb588a5b1c0804d7779ac604d475b.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

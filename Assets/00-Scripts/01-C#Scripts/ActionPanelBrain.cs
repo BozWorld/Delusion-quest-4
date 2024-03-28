@@ -21,6 +21,14 @@ public class ActionPanelBrain : MonoBehaviour
         }
     }
 
+    public void UnwrapContext(string a,string b)
+    {
+        LeanTween.scaleY(_clr.gameObject, 1, .3f);
+        LeanTween.scaleY(_pwr.gameObject, 1, .3f);
+        _clr.UnwrapTextline(a);
+        _pwr.UnwrapTextline(b);
+    }
+
     public void EnableBaseActionsPanel()
     {
         foreach(RectTransform img in _baseButtons)
@@ -58,13 +66,11 @@ public class ActionPanelBrain : MonoBehaviour
                 break;
             case 1:
                 LeanTween.scale(_bullet.gameObject, Vector3.one, .3f);
-                LeanTween.scaleY(_pwr.gameObject, 1, 0.3f);
-                _pwr.UnwrapTextline("Bientot full...");
+                
                 break;
             case 2:
                 LeanTween.scale(_bullet.gameObject, new Vector3(2,2,2), .3f);
-                LeanTween.scaleY(_pwr.gameObject, 1, 0.3f);
-                _pwr.UnwrapTextline("C'est full, Go! Go!");
+                
                 break;
         }
     }
@@ -74,24 +80,20 @@ public class ActionPanelBrain : MonoBehaviour
         switch (color)
         {
             case "red":
-                LeanTween.scaleY(_clr.gameObject, 1, 0.3f);
-                _clr.UnwrapTextline("red up");
+                
                 _bullet.color = red;
                 break;
             case "blue":
-                LeanTween.scaleY(_clr.gameObject, 1, 0.3f);
-                _clr.UnwrapTextline("blue up");
+                
                 _bullet.color = blue;
                 break;
             case "violet":
-                LeanTween.scaleY(_clr.gameObject, 1, 0.3f);
-                _clr.UnwrapTextline("violet here");
+                
                 _bullet.color = violet;
                 break;
             case "empty":
                 _bullet.color = Color.white;
-                LeanTween.scaleY(_clr.gameObject, 1, 0.3f);
-                _clr.UnwrapTextline("clear");
+               
                 break;
 
         }
